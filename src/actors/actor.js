@@ -51,31 +51,56 @@ class Actor extends React.Component {
           return <div>Загрузка...</div>;
         } else {
           return (
-            <div className='actorwrap'>
-              <div className ='firstcolumn'>
+            <div className='actorWrap'>
+              <div className ='firstColumn'>
                 <div className='actorPic'>
+                  <img src={actors.posterUrl} alt='actorname'/>
                 </div>
               </div>
-              <div className ='firstcolumn'>
-                <img src={actors.posterUrl} alt='actorname'/>
+              <div className ='secondColumn'>
                 <div className="description">
-                    <div className="actorName">
-                        <h1>{actors.nameRu}</h1>
-                        <h2>{actors.nameEn}</h2>
-                    </div>
-                    <div className="about">
-                        <h2>About</h2>
-                        <p>{actors.profession}</p>
-                        <p>{actors.growth}</p>
-                        <p>{actors.birthday}, {actors.age} лет</p>
-                        <p>{actors.birthplace}</p>
-                        <p>Jenre</p>
-                        <p>Movies: {actors.films.length}</p>
-                    </div>
+                  <div className="actorName">
+                    <h1>{actors.nameRu}</h1>
+                    <h2>{actors.nameEn}</h2>
+                    <h2>О персоне</h2>
+                  </div>
+                  <div className="aboutTable">
+                    <tr>
+                      <th>Карьера</th><th>{actors.profession}</th>
+                    </tr>
+                    <tr>
+                      <th>Рост</th><th>{actors.growth} см</th>
+                    </tr>
+                    <tr>
+                      <th>Дата рождения</th><th>{actors.birthday}, {actors.age} лет</th>
+                    </tr>
+                    <tr>
+                      <th>Место рождения</th><th>{actors.birthplace}</th>
+                    </tr>
+                    <tr>
+                      <th>Жанры</th> <th></th>
+                    </tr>
+                    <tr>
+                      <th>Всего фильмов</th><th>{actors.films.length}</th>
+                    </tr>
+                  </div>
                 </div>
-                </div>
-            
-        </div>
+              </div>
+              <div className='thirdColumn'>
+                <p><b>Лучшие фильмы</b></p>
+                {this.state.actors.films.map((film) => film.general ? (
+                  <p>{film.nameRu}</p>
+                ) : null 
+                ) 
+                }
+                {actors.hasAwards ? (
+                  <div>
+                    <img src='https://st.kp.yandex.net/images/movies/awardOscar.png' alt='actorname'/>
+                    <p>{actors.hasAwards}</p>
+                  </div>
+                ): null}
+              </div>
+            </div>
           );
         }
       }

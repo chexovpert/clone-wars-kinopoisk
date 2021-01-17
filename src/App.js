@@ -77,18 +77,18 @@ class App extends Component {
     cars = null
     return (
     <div style={divStyle}>
-      <h1>{this.state.pageTitle}</h1>
-      <button onClick={this.toggleCars.bind(this)}>toggle cars title</button>
+      {/* <h1>{this.state.pageTitle}</h1>
+      <button onClick={this.toggleCars.bind(this)}>toggle cars title</button> */}
       <Actor>
         
       </Actor>
-      <div style={{
+      {/* <div style={{
         width: '400',
         margin: 'auto',
         paddingTop: '20px',
       }}>
         {cars}
-      </div>
+      </div> */}
       {/* {this.state.showCars ?
       this.state.cars.map((car, index)=>{
         return (

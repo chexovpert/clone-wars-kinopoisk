@@ -1,44 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {Component} from 'react';
-import Car from './car/car'
-import Actor from './actors/actor'
+import logo from "./logo.svg";
+import "./App.css";
+import React, { Component } from "react";
+import Car from "./car/car";
+import Actor from "./actors/actor";
 
 class App extends Component {
   state = {
-    cars: [{name:'mazda', year: 1997}, {name:'audi', year: 1997}, {name:'ferrari', year: 1997}],
+    cars: [
+      { name: "mazda", year: 1997 },
+      { name: "audi", year: 1997 },
+      { name: "ferrari", year: 1997 },
+    ],
     pageTitle: "Title",
     showCars: false,
     isLoaded: false,
     error: null,
-    items:{},
-  }
+    items: {},
+  };
   clickHandler(prop) {
     this.setState({
-      pageTitle: prop
-    })
+      pageTitle: prop,
+    });
   }
   toggleCars() {
     this.setState({
-      showCars: !this.state.showCars
-    })
+      showCars: !this.state.showCars,
+    });
   }
-  componentDidMount() {
-    fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/66539`, 
-    {
-      method: 'GET',
+  /*componentDidMount() {
+    fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/66539`, {
+      method: "GET",
       headers: {
-        "accept": "application/json",
-        "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8"
-      }
+        accept: "application/json",
+        "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
+      },
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
         (result) => {
-          const actors = this.state.items.actors
+          const actors = this.state.items.actors;
           this.setState({
             isLoaded: true,
-            actors: result
+            actors: result,
           });
           console.log(this.state);
         },
@@ -48,48 +51,42 @@ class App extends Component {
           console.log("error");
           this.setState({
             isLoaded: true,
-            error
+            error,
           });
         }
-      )
-  }
+      );
+  }*/
   render() {
-    const divStyle={
-      textAlign: 'center'
-    }
-    let cars=null
-    const {error, isLoaded, items} = this.state;
-    if(this.state.showCars) {
-      cars =
-          this.state.cars.map((car, index)=>{
-            return (
-              <Car
-                key={index}
-                name={car.name}
-                year={car.year}
-                handler={this.clickHandler.bind(this, car.name)}
-              />
-            )
-          })
-        
-      
-    } else 
-    cars = null
+    const divStyle = {
+      textAlign: "center",
+    };
+    let cars = null;
+    const { error, isLoaded, items } = this.state;
+    if (this.state.showCars) {
+      cars = this.state.cars.map((car, index) => {
+        return (
+          <Car
+            key={index}
+            name={car.name}
+            year={car.year}
+            handler={this.clickHandler.bind(this, car.name)}
+          />
+        );
+      });
+    } else cars = null;
     return (
-    <div style={divStyle}>
-      {/* <h1>{this.state.pageTitle}</h1>
+      <div style={divStyle}>
+        {/* <h1>{this.state.pageTitle}</h1>
       <button onClick={this.toggleCars.bind(this)}>toggle cars title</button> */}
-      <Actor>
-        
-      </Actor>
-      {/* <div style={{
+        <Actor id="37859"></Actor>
+        {/* <div style={{
         width: '400',
         margin: 'auto',
         paddingTop: '20px',
       }}>
         {cars}
       </div> */}
-      {/* {this.state.showCars ?
+        {/* {this.state.showCars ?
       this.state.cars.map((car, index)=>{
         return (
           <Car
@@ -101,11 +98,11 @@ class App extends Component {
         )
       }): null
     } */}
-      {/* <Car name={cars[0].name} year={cars[0].year} handler={this.clickHandler.bind(this)}/>
+        {/* <Car name={cars[0].name} year={cars[0].year} handler={this.clickHandler.bind(this)}/>
       <Car name={cars[1].name} year={cars[1].year} handler={this.clickHandler.bind(this)}/>
       <Car name={cars[2].name} year={cars[2].year} handler={this.clickHandler.bind(this)}/> */}
-    </div>
-    )
+      </div>
+    );
   }
 }
 // function App() {

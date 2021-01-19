@@ -1,0 +1,50 @@
+.header {
+  width: 100vw;
+  height: 40px;
+  position: static;
+  top: 0;
+  left: 0;
+  background-color: mediumslateblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 200px;
+  height: 30px;
+  background-color: azure;
+  margin: 0 10px;
+}
+
+.logo {
+  width: 35px;
+  height: 35px;
+  margin: 0 10px;
+  padding: 2.5px;
+  background-color: violet;
+}
+
+.burger {
+}
+
+.burger-menu {
+  display: none;
+  position: absolute;
+  left: 450px;
+  top: 40px;
+  width: 150px;
+  margin: 0 10px;
+  background-color: aquamarine;
+  z-index: 4;
+}
+
+li {
+  text-align: start;
+  list-style-type: none;
+}

@@ -48,7 +48,9 @@ class Actor extends React.Component {
         if (error) {
           return <div>Ошибка: {error.message}</div>;
         } else if (!isLoaded) {
-          return <div>Загрузка...</div>;
+          return <div>Загрузка...
+            <img src='https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif'/>
+          </div>;
         } else {
           return (
             <div className='actorWrap'>

@@ -1,0 +1,11 @@
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  background-color: gray;
+}
+footer .svg {
+  width: 100px;
+  height: 30px;
+}

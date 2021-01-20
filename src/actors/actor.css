@@ -60,7 +60,7 @@ ul.factlist li {
   padding: 20px;
 }
 ul.factlist li.show:nth-child(n + 4) {
-  display: block;
+  display: list-item;
 }
 .show_hide_list {
   cursor: pointer;
@@ -69,6 +69,7 @@ ul.factlist li.show:nth-child(n + 4) {
   padding: 10px;
   background: #fc0;
 }
+
 .film_list_table {
   display: flex;
   justify-content: space-between;
@@ -81,20 +82,20 @@ ul.factlist li.show:nth-child(n + 4) {
   align-items: center;
 }
 div.scrollmenu {
-    background-color: #333;
-    overflow: auto;
-    white-space: nowrap;
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 div.scrollmenu div {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
 }
 
 div.scrollmenu div:hover {
-    cursor: pointer;
-    background-color: #777;
+  cursor: pointer;
+  background-color: #777;
 }

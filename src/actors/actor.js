@@ -1,5 +1,6 @@
 import React from "react";
 import "./actor.css";
+import Graph from "../graph/graph";
 class Actor extends React.Component {
   constructor(props) {
     super();
@@ -149,6 +150,7 @@ class Actor extends React.Component {
                   </div>
                 ) : null}
               </ul>
+              <Graph actor={this.state.actors} role={this.state.role}></Graph>
               <div className="movieList">
                 <ol className="listt">
                   <div class="scrollmenu">
@@ -165,18 +167,22 @@ class Actor extends React.Component {
                       Сценарист
                     </div>
                   </div>
-                  {this.state.actors.films.map((film) =>
-                    film.professionKey === this.state.role ? (
-                      <ol className="film_list_table">
-                        <div className="film_table_name">
-                          <h3>{film.nameEn}</h3>
-                          <p>{film.nameRu}</p>
-                          <p>{film.description}</p>
-                        </div>
-                        <div className="film_rating">{film.rating}</div>
-                      </ol>
-                    ) : null
-                  )}
+                  <ol>
+                    {this.state.actors.films.map((film) =>
+                      film.professionKey === this.state.role ? (
+                        <li>
+                          <div className="film_list_table">
+                            <div className="film_table_name">
+                              <h3>{film.nameEn}</h3>
+                              <p>{film.nameRu}</p>
+                              <p>{film.description}</p>
+                            </div>
+                            <div className="film_rating">{film.rating}</div>
+                          </div>
+                        </li>
+                      ) : null
+                    )}
+                  </ol>
                 </ol>
               </div>
             </div>

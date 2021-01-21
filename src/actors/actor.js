@@ -1,6 +1,9 @@
 import React from "react";
 import "./actor.css";
 import Graph from "../graph/graph";
+import Table from "../table/table";
+import Factlist from "../factlist/factlist";
+import { NavLink } from "react-router-dom";
 class Actor extends React.Component {
   constructor(props) {
     super();
@@ -8,20 +11,62 @@ class Actor extends React.Component {
   }
 
   state = {
-    actor: null,
+    actors: null,
     isLoaded: false,
     error: null,
-    listToggle: false,
-    role: "HIMSELF",
+    role: "ACTOR",
   };
+  // idHandler(id) {
+  //   this.props.handler(id);
+  //   //console.log(this.props);
+  // }
+  componentDidUpdate(prevProps, prevState) {
+    // only update if not match I don't know what's your data is so add a
+    // simple check like we use for strings.
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      fetch(
+        `https://kinopoiskapiunofficial.tech/api/v1/staff/${this.props.match.params.id}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            //const actors = this.state.items.actor
+            this.setState({
+              isLoaded: true,
+              actors: result,
+            });
+            console.log(this.state);
+          },
+          // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+          // чтобы не перехватывать исключения из ошибок в самих компонентах.
+          (error) => {
+            console.log("error");
+            this.setState({
+              isLoaded: true,
+              error,
+            });
+          }
+        );
+    }
+  }
   componentDidMount() {
-    fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/${this.props.id}`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
-      },
-    })
+    fetch(
+      `https://kinopoiskapiunofficial.tech/api/v1/staff/${this.props.match.params.id}`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
+        },
+      }
+    )
       .then((res) => res.json())
       .then(
         (result) => {
@@ -48,12 +93,7 @@ class Actor extends React.Component {
       role: prop,
     });
   }
-  toggleList() {
-    this.setState({
-      listClass: "show",
-      listToggle: !this.state.listToggle,
-    });
-  }
+
   render() {
     {
       const { error, isLoaded, actors } = this.state;
@@ -69,6 +109,7 @@ class Actor extends React.Component {
       } else {
         return (
           <div className="actorWrap">
+            <h2>{this.props.match.params.id}</h2>
             <div className="actorTop">
               <div className="firstColumn">
                 <div className="actorPic">
@@ -116,7 +157,25 @@ class Actor extends React.Component {
                   <b>Лучшие фильмы</b>
                 </p>
                 {this.state.actors.films.map((film) =>
-                  film.general ? <p>{film.nameRu}</p> : null
+                  film.general ? (
+                    <div>
+                      <p>{film.nameRu}</p>
+                      <NavLink
+                        to={"/actor/" + 10988}
+                        exact
+                        //onClick={this.idHandler.bind(this, 10988)}
+                      >
+                        Мартин
+                      </NavLink>
+                      <NavLink
+                        to={"/actor/" + 37859}
+                        exact
+                        //onClick={this.idHandler.bind(this, 37859)}
+                      >
+                        Лео
+                      </NavLink>
+                    </div>
+                  ) : null
                 )}
                 {actors.hasAwards ? (
                   <div>
@@ -130,61 +189,13 @@ class Actor extends React.Component {
               </div>
             </div>
             <div className="actorBottom">
-              <ul style={{ listStyleType: "square" }} class="factlist">
-                {this.state.actors.facts.length ? (
-                  <h2>Знаете ли вы, что…</h2>
-                ) : null}
-                {this.state.actors.facts.map((fact) =>
-                  this.state.actors.facts.length ? (
-                    <li className={this.state.listToggle ? "show" : ""}>
-                      {fact}
-                    </li>
-                  ) : null
-                )}
-                {this.state.actors.facts.length >= 3 ? (
-                  <div
-                    className="show_hide_list"
-                    onClick={this.toggleList.bind(this)}
-                  >
-                    {this.state.listToggle ? "Скрыть" : "Смотреть все"}
-                  </div>
-                ) : null}
-              </ul>
+              <Factlist facts={this.state.actors.facts}></Factlist>
               <Graph actor={this.state.actors} role={this.state.role}></Graph>
-              <div className="movieList">
-                <ol className="listt">
-                  <div class="scrollmenu">
-                    <div onClick={this.roleHandler.bind(this, "ACTOR")}>
-                      Актер
-                    </div>
-                    <div onClick={this.roleHandler.bind(this, "PRODUCER")}>
-                      Продюсер
-                    </div>
-                    <div onClick={this.roleHandler.bind(this, "HIMSELF")}>
-                      Актер: играет самого себя
-                    </div>
-                    <div onClick={this.roleHandler.bind(this, "WRITER")}>
-                      Сценарист
-                    </div>
-                  </div>
-                  <ol>
-                    {this.state.actors.films.map((film) =>
-                      film.professionKey === this.state.role ? (
-                        <li>
-                          <div className="film_list_table">
-                            <div className="film_table_name">
-                              <h3>{film.nameEn}</h3>
-                              <p>{film.nameRu}</p>
-                              <p>{film.description}</p>
-                            </div>
-                            <div className="film_rating">{film.rating}</div>
-                          </div>
-                        </li>
-                      ) : null
-                    )}
-                  </ol>
-                </ol>
-              </div>
+              <Table
+                actors={this.state.actors}
+                role={this.state.role}
+                handler={this.roleHandler.bind(this)}
+              ></Table>
             </div>
           </div>
         );

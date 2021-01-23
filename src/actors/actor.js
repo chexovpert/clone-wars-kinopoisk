@@ -27,7 +27,7 @@ class Actor extends React.Component {
             isLoaded: true,
             actors: result,
           });
-          console.log(this.state);
+          console.log(this.state.actors);
         },
         // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
         // чтобы не перехватывать исключения из ошибок в самих компонентах.

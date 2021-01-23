@@ -1,17 +1,16 @@
 import React from "react";
 import "./header.css";
 import logo from "./Burger.png";
+import Search from "./search";
+// import Popup from "./popup";
 
-export default () => (
+export default (props) => (
   <div className="header">
-    <div className="logoTitle">ТипоКинопоиск</div>
-    <div className="title" onMouseLeave={toggleBurger}>
-      <img
-        src={logo}
-        className="logo"
-        onMouseEnter={toggleBurger}
-        onMouseLeave={toggleBurger}
-      ></img>
+    <div className="logoTitle" onMouseEnter={props.showPopup}>
+      ТипоКинопоиск
+    </div>
+    <div className="title">
+      <img src={logo} className="logo"></img>
       <ul className="burger-menu">
         <li>Films</li>
         <li>Shows</li>
@@ -19,15 +18,8 @@ export default () => (
         <li>Top 250 shows</li>
       </ul>
     </div>
-    <div className="search"></div>
+    <div className="search">
+      <Search />
+    </div>
   </div>
 );
-
-function toggleBurger() {
-  const list = document.querySelector(".burger-menu");
-  if (list.style.display === "inline") {
-    list.style.display = "none";
-  } else {
-    list.style.display = "inline";
-  }
-}

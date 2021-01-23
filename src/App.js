@@ -1,9 +1,10 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
 import Car from "./car/car";
 import Actor from "./actors/actor";
 import Header from "./header/header";
+import Popup from "./header/popup";
 
 class App extends Component {
   state = {
@@ -57,6 +58,16 @@ class App extends Component {
         }
       );
   }
+
+  showPopup(event) {
+    console.log(event.pageX, event.pageY);
+    const popup = document.querySelector(".popup-wrap");
+
+    popup.style.top = `${event.pageY}px`;
+    popup.style.left = `${event.pageX}px`;
+    popup.style.display = "block";
+  }
+
   render() {
     const divStyle = {
       textAlign: "center",
@@ -79,7 +90,8 @@ class App extends Component {
       <div style={divStyle}>
         {/* <h1>{this.state.pageTitle}</h1>
       <button onClick={this.toggleCars.bind(this)}>toggle cars title</button> */}
-        <Header />
+        <Popup />
+        <Header showPopup={this.showPopup} />
         <Actor></Actor>
         {/* <div style={{
         width: '400',

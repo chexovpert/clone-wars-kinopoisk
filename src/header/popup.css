@@ -1,0 +1,8 @@
+.popup-wrap {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  z-index: 2;
+  position: absolute;
+  display: none;
+}

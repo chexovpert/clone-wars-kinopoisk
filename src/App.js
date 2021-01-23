@@ -4,16 +4,10 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Car from "./car/car";
 import Actor from "./actors/actor";
+import Films from "./films/films";
 
 class App extends Component {
   state = {
-    cars: [
-      { name: "mazda", year: 1997 },
-      { name: "audi", year: 1997 },
-      { name: "ferrari", year: 1997 },
-    ],
-    pageTitle: "Title",
-    showCars: false,
     isLoaded: false,
     error: null,
     items: {},
@@ -24,34 +18,22 @@ class App extends Component {
       pageTitle: prop,
     });
   }
-  toggleCars() {
-    this.setState({
-      showCars: !this.state.showCars,
-    });
-  }
-  idHandler(id) {
-    this.setState({
-      id: id,
-    });
-  }
+
   render() {
     const divStyle = {
       textAlign: "center",
     };
-    let cars = null;
-    const { error, isLoaded, items } = this.state;
     return (
       <div style={divStyle}>
         <Route
           path={"/name/:id"}
           exact
-          render={(props) => (
-            <Actor
-              // id={this.state.id}
-              // handler={this.idHandler.bind(this)}
-              {...props}
-            ></Actor>
-          )}
+          render={(props) => <Actor {...props}></Actor>}
+        />
+        <Route
+          path={"/film/:id"}
+          exact
+          render={(props) => <Films {...props}></Films>}
         />
       </div>
     );

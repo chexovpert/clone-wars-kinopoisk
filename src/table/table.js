@@ -1,5 +1,6 @@
 import React from "react";
 import "./table.css";
+import { NavLink } from "react-router-dom";
 class Table extends React.Component {
   constructor(props) {
     super();
@@ -28,7 +29,9 @@ class Table extends React.Component {
                 <li>
                   <div className="film_list_table">
                     <div className="film_table_name">
-                      <h3>{film.nameEn}</h3>
+                      <NavLink to={"/film/" + film.filmId} exact>
+                        <h3>{film.nameEn}</h3>
+                      </NavLink>
                       <p>{film.nameRu}</p>
                       <p>{film.description}</p>
                     </div>

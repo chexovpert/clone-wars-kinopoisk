@@ -3,6 +3,7 @@ import "./actor.css";
 import Graph from "../graph/graph";
 import Table from "../table/table";
 import Factlist from "../factlist/factlist";
+
 import { NavLink } from "react-router-dom";
 class Actor extends React.Component {
   constructor(props) {
@@ -20,53 +21,14 @@ class Actor extends React.Component {
   //   this.props.handler(id);
   //   //console.log(this.props);
   // }
-  componentDidUpdate(prevProps, prevState) {
-    // only update if not match I don't know what's your data is so add a
-    // simple check like we use for strings.
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      fetch(
-        `https://kinopoiskapiunofficial.tech/api/v1/staff/${this.props.match.params.id}`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            //const actors = this.state.items.actor
-            this.setState({
-              isLoaded: true,
-              actors: result,
-            });
-            console.log(this.state);
-          },
-          // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-          // чтобы не перехватывать исключения из ошибок в самих компонентах.
-          (error) => {
-            console.log("error");
-            this.setState({
-              isLoaded: true,
-              error,
-            });
-          }
-        );
-    }
-  }
-  componentDidMount() {
-    fetch(
-      `https://kinopoiskapiunofficial.tech/api/v1/staff/${this.props.match.params.id}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
-        },
-      }
-    )
+  apiHandler(link) {
+    fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/${link}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
+      },
+    })
       .then((res) => res.json())
       .then(
         (result) => {
@@ -87,6 +49,20 @@ class Actor extends React.Component {
           });
         }
       );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    // only update if not match I don't know what's your data is so add a
+    // simple check like we use for strings.
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.setState({
+        isLoaded: false,
+        error: null,
+      });
+      this.apiHandler(this.props.match.params.id);
+    }
+  }
+  componentDidMount() {
+    this.apiHandler(this.props.match.params.id);
   }
   roleHandler(prop) {
     this.setState({
@@ -156,23 +132,25 @@ class Actor extends React.Component {
                 <p>
                   <b>Лучшие фильмы</b>
                 </p>
+                <NavLink
+                  to={"/name/" + 10988}
+                  exact
+                  //onClick={this.idHandler.bind(this, 10988)}
+                >
+                  Мартин
+                </NavLink>
+                <NavLink
+                  to={"/name/" + 37859}
+                  exact
+                  //onClick={this.idHandler.bind(this, 37859)}
+                >
+                  Лео
+                </NavLink>
                 {this.state.actors.films.map((film) =>
                   film.general ? (
                     <div>
-                      <p>{film.nameRu}</p>
-                      <NavLink
-                        to={"/actor/" + 10988}
-                        exact
-                        //onClick={this.idHandler.bind(this, 10988)}
-                      >
-                        Мартин
-                      </NavLink>
-                      <NavLink
-                        to={"/actor/" + 37859}
-                        exact
-                        //onClick={this.idHandler.bind(this, 37859)}
-                      >
-                        Лео
+                      <NavLink to={"/film/" + film.filmId} exact>
+                        <p>{film.nameRu}</p>
                       </NavLink>
                     </div>
                   ) : null

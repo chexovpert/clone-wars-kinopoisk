@@ -1,10 +1,9 @@
 import React from "react";
-//import "./table.css";
+//import "./casttable.css";
 import { NavLink } from "react-router-dom";
 class CastTable extends React.Component {
   constructor(props) {
     super();
-    //this.id = props;
   }
   state = {
     isLoaded: false,
@@ -25,10 +24,8 @@ class CastTable extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          console.log(this.state);
+          //console.log(this.state);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           console.log("error");
           this.setState({
@@ -39,8 +36,6 @@ class CastTable extends React.Component {
       );
   }
   componentDidUpdate(prevProps, prevState) {
-    // only update if not match I don't know what's your data is so add a
-    // simple check like we use for strings.
     if (prevProps.id !== this.props.id) {
       this.setState({
         isLoaded: false,
@@ -76,6 +71,9 @@ class CastTable extends React.Component {
               <p>{actor.nameRu}</p>
             </NavLink>
           ))}
+          <NavLink to={"/film/" + this.props.id + "/staff"} exact>
+            Все актеры
+          </NavLink>
         </div>
       );
     }

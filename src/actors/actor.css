@@ -19,7 +19,7 @@
 .actorName {
   text-align: left;
 }
-.aboutTable {
+/* .aboutTable {
   text-align: left;
   width: 420px;
   height: 237px;
@@ -43,7 +43,7 @@
 .aboutTable tr td:last-child,
 .aboutTable tr th:last-child {
   border-right: none;
-}
+} */
 .thirdColumn {
   height: 474px;
   width: 180px;

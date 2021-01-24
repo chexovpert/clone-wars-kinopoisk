@@ -2,9 +2,10 @@
 import "./App.css";
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import Car from "./car/car";
+//import Car from "./car/car";
 import Actor from "./actors/actor";
 import Films from "./films/films";
+import CastPage from "./castPage/castPage";
 
 class App extends Component {
   state = {
@@ -34,6 +35,11 @@ class App extends Component {
           path={"/film/:id"}
           exact
           render={(props) => <Films {...props}></Films>}
+        />
+        <Route
+          path={"/film/:id/staff"}
+          exact
+          render={(props) => <CastPage {...props}></CastPage>}
         />
       </div>
     );

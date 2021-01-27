@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import Actor from "./actors/actor";
 import Films from "./films/films";
 import CastPage from "./castPage/castPage";
-
+import Moviebot from "./moviebot/moviebot";
 class App extends Component {
   state = {
     isLoaded: false,
@@ -25,7 +25,7 @@ class App extends Component {
       textAlign: "center",
     };
     return (
-      <div style={divStyle}>
+      <div style={divStyle} className="wrap">
         <Route
           path={"/name/:id"}
           exact
@@ -41,6 +41,7 @@ class App extends Component {
           exact
           render={(props) => <CastPage {...props}></CastPage>}
         />
+        <Moviebot></Moviebot>
       </div>
     );
   }

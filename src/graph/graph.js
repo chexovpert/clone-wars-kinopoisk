@@ -63,6 +63,7 @@ class Graph extends React.Component {
             {
               ticks: {
                 beginAtZero: true,
+                suggestedMax: 10,
               },
             },
           ],

@@ -41,16 +41,16 @@ class FilmTable extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     // only update if not match I don't know what's your data is so add a
     // simple check like we use for strings.
-    if (prevProps.match.params.id !== this.props.match.params.id) {
+    if (prevProps.id !== this.props.id) {
       this.setState({
         isLoaded: false,
         error: null,
       });
-      this.apiHandler(this.props.match.params.id);
+      this.apiHandler(this.props.id);
     }
   }
   componentDidMount() {
-    this.apiHandler(this.props.match.params.id);
+    this.apiHandler(this.props.id);
     console.log(this.state);
   }
   render() {
@@ -69,6 +69,7 @@ class FilmTable extends React.Component {
       "VOICE_DIRECTOR",
       "UNKNOWN",
     ];
+    //console.log(this.props.film);
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
@@ -79,17 +80,119 @@ class FilmTable extends React.Component {
         </div>
       );
     } else {
-      const staffarray = professions.map((elem) =>
-        staff.slice().filter((person) => person.professionKey === elem)
-      );
-      return staffarray.map((profession) =>
-        profession.length ? <div className={profession}></div> : null
+      // const staffarray = professions.map((elem) =>
+      //   staff.slice().filter((person) => person.professionKey === elem)
+      // );
+      // return staffarray.map((profession) =>
+      //   profession.length ? <div className={profession}></div> : null
+      // );
+      return (
+        <table className="aboutTable">
+          <tr>
+            <th>Год производства</th>
+            <th>{this.props.film.year}</th>
+          </tr>
+          <tr>
+            <th>Страна</th>
+            <th>
+              {this.props.film.countries.map((country) => (
+                <p>{country.country}</p>
+              ))}
+            </th>
+          </tr>
+          <tr>
+            <th>Жанр</th>
+            <th>
+              {this.props.film.genres.map((genre) => (
+                <p>{genre.genre}</p>
+              ))}
+            </th>
+          </tr>
+          <tr>
+            <th>Слоган</th>
+            <th>{this.props.film.slogan}</th>
+          </tr>
+          <tr>
+            <th>Режиссер</th>
+            <th>
+              {staff.map((person) =>
+                person.professionKey === "DIRECTOR" ? (
+                  <p>{person.nameRu}</p>
+                ) : null
+              )}
+            </th>
+          </tr>
+          <tr>
+            <th>Сценарист</th>
+            <th>
+              {staff.map((person) =>
+                person.professionKey === "WRITER" ? (
+                  <p>{person.nameRu}</p>
+                ) : null
+              )}
+            </th>
+          </tr>
+          <tr>
+            <th>Оператор</th>
+            <th>
+              {staff.map((person) =>
+                person.professionKey === "OPERATOR" ? (
+                  <p>{person.nameRu}</p>
+                ) : null
+              )}
+            </th>
+          </tr>
+          <tr>
+            <th>Композитор</th>
+            <th>
+              {staff.map((person) =>
+                person.professionKey === "COMPOSER" ? (
+                  <p>{person.nameRu}</p>
+                ) : null
+              )}
+            </th>
+          </tr>
+          <tr>
+            <th>Художник</th>
+            <th>
+              {staff.map((person) =>
+                person.professionKey === "DESIGN" ? (
+                  <p>{person.nameRu}</p>
+                ) : null
+              )}
+            </th>
+          </tr>
+          <tr>
+            <th>Бюджет</th>
+            <th>${this.props.film.budget}</th>
+          </tr>
+          <tr>
+            <th>Сборы в США</th>
+            <th>${this.props.film.grossUsa}</th>
+          </tr>
+          <tr>
+            <th>Сборы в мире</th>
+            <th>${this.props.film.grossWorld}</th>
+          </tr>
+          <tr>
+            <th>Премьера в мире</th>
+            <th>${this.props.film.premiereWorld}</th>
+          </tr>
+          <tr>
+            <th>Возраст</th>
+            <th>${this.props.film.ratingAgeLimits}</th>
+          </tr>
+          <tr>
+            <th>Время</th>
+            <th>${this.props.film.filmLength}</th>
+          </tr>
+        </table>
       );
     }
   }
 }
-export default CastPage;
-// export default (props) => (
+export default FilmTable;
+//export default (props) => (
 //   <table className="aboutTable">
 //     <tr>
 //       <th>Карьера</th>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./films.css";
 import Factlist from "../factlist/factlist";
 import CastTable from "../casttable/casttable";
-
+import FilmTable from "./filmtable/filmtable";
 class Films extends Component {
   constructor(props) {
     super();
@@ -77,6 +77,10 @@ class Films extends Component {
                     <h2>{films.nameEn}</h2>
                     <h2>О фильме</h2>
                   </div>
+                  <FilmTable
+                    film={films}
+                    id={this.props.match.params.id}
+                  ></FilmTable>
                   {/* <table className="aboutTable">
                     <tr>
                       <th>Карьера</th>

@@ -7,6 +7,7 @@ import Actor from "./actors/actor";
 import Films from "./films/films";
 import CastPage from "./castPage/castPage";
 import Moviebot from "./moviebot/moviebot";
+import Pagestory from "./pagestory/pagestory"
 class App extends Component {
   state = {
     isLoaded: false,
@@ -42,6 +43,11 @@ class App extends Component {
           render={(props) => <CastPage {...props}></CastPage>}
         />
         <Moviebot></Moviebot>
+        <Route
+          path={"/"}
+          exact
+          render={(props) => <Pagestory {...props}></Pagestory>}
+        />
       </div>
     );
   }

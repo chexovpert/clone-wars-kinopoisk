@@ -26,6 +26,20 @@ class Films extends Component {
             isLoaded: true,
             films: result.data,
           });
+          if("history" in localStorage) {
+            let history = JSON.parse( localStorage.history );
+            if (!history.find((elem) => elem.nameRu === result.data.nameRu )) {
+              history.unshift(result.data);
+            let historyJSON= JSON.stringify(history)
+            localStorage.setItem('history', historyJSON);
+            }
+
+            
+        } else {
+          let history = [result.data];
+          let historyJSON= JSON.stringify(history)
+          localStorage.setItem('history', historyJSON);
+        }
         },
         (error) => {
           console.log("error");

@@ -31,7 +31,21 @@ class Actor extends React.Component {
             isLoaded: true,
             actors: result,
           });
-          console.log(this.state);
+          if("history" in localStorage) {
+            let history = JSON.parse( localStorage.history );
+            if (!history.find((elem) => elem.nameRu === result.nameRu )) {
+              history.unshift(result);
+            let historyJSON= JSON.stringify(history)
+            localStorage.setItem('history', historyJSON);
+            }
+
+            
+        } else {
+          let history = [result];
+          let historyJSON= JSON.stringify(history)
+          localStorage.setItem('history', historyJSON);
+        }
+          //console.log(this.state);
         },
         (error) => {
           console.log("error");

@@ -1,0 +1,19 @@
+.search-page-result-field {
+  display: flex;
+  width: 50vw;
+  height: 15vh;
+  margin: 5px;
+}
+
+.searchpage-poster {
+  width: 10vw;
+  height: 15vh;
+}
+
+h1 {
+  font-size: 15px;
+}
+
+p {
+  font-size: 12px;
+}

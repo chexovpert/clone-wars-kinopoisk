@@ -1,6 +1,6 @@
 //import logo from "./logo.svg";
 import "./App.css";
-import { Route } from "react-router-dom";
+//import { Route } from "react-router-dom";
 import React, { Component } from "react";
 //import Car from "./car/car";
 import Actor from "./actors/actor";
@@ -9,13 +9,22 @@ import CastPage from "./castPage/castPage";
 import Moviebot from "./moviebot/moviebot";
 import Pagestory from "./pagestory/pagestory"
 import ScrollTop from "./scrollbutton/scrollbutton"
+import Header from "./header/header";
+import Popup from "./header/popup";
+import SearchPage from "./search/searchPage";
+import Top from "./top/top";
+import { Route, Redirect, Switch } from "react-router-dom";
+import Main from "./mainPage/main";
+import FilterSearchPage from "./search/filterSearchPage";
+import FilterSearchResult from "./search/filterSearchResult";
 
 class App extends Component {
   state = {
     isLoaded: false,
     error: null,
     items: {},
-    //id: 37859,
+    fId: 326,
+    isFilm: true,
   };
   clickHandler(prop) {
     this.setState({
@@ -23,12 +32,34 @@ class App extends Component {
     });
   }
 
+  updateInfo = (id, isFilm) => {
+    this.setState({
+      fId: id,
+      isFilm: isFilm,
+    });
+  };
+
+  showPopup(event) {
+    let memState;
+    const popup = document.querySelector(".popup-wrap");
+    if (popup.style.display !== "flex" || event.target !== memState) {
+      memState = event.target;
+      popup.style.top = `${event.pageY + 5}px`;
+      popup.style.left = `${event.pageX + 5}px`;
+      popup.style.display = "flex";
+    }
+  }
+
   render() {
     const divStyle = {
       textAlign: "center",
     };
     return (
-      <div style={divStyle} className="wrap">
+      
+      <div style={divStyle} className="bigWrap">
+         <Popup kName={this.state.fId} kFilm={this.state.isFilm} />
+         <Header showPopup={this.showPopup} />
+         <div className="wrap">
         <Route
           path={"/name/:id"}
           exact
@@ -51,6 +82,18 @@ class App extends Component {
           render={(props) => <Pagestory {...props}></Pagestory>}
         />
         <ScrollTop></ScrollTop>
+        {/* <Route path="/" exact component={Main} /> */}
+            <Route
+              path="/search/:keyword/:page"
+              exact
+              render={(props) => <SearchPage showPopup={this.showPopup} chang={this.updateInfo} {...props}></SearchPage>}
+            />
+            <Route path="/top/:type/:page" component={Top} />
+            <Route path="/filtersearch" component={FilterSearchPage} exact />
+            <Route path="/filterSearchResult" render={(props) => <FilterSearchResult {...props}></FilterSearchResult>} />
+            <Route path="/actor" render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props} />} />
+            {/* <Redirect from={"/search//1"} to={"/filtersearch"} /> */}
+        </div>
       </div>
     );
   }

@@ -1,0 +1,27 @@
+.search-field {
+  z-index: 1;
+  position: relative;
+  /* background: url(./Burger.png); */
+  height: 30px;
+  width: 30px;
+}
+
+.search-input {
+  width: 200px;
+  height: 25px;
+}
+
+.search-result {
+  display: none;
+  position: absolute;
+  top: 30px;
+  width: 200px;
+  height: auto;
+  background-color: aqua;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.search-form {
+  display: flex;
+}

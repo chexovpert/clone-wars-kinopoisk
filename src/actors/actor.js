@@ -76,6 +76,9 @@ class Actor extends React.Component {
   }
 
   render() {
+    {/* <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, film.filmId, true)}>
+                    {film.nameRu}
+                  </p> */}
     {
       const { error, isLoaded, actors } = this.state;
       if (error) {

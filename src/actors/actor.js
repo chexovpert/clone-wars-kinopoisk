@@ -31,22 +31,22 @@ class Actor extends React.Component {
             isLoaded: true,
             actors: result,
           });
-          document.title=`${result.nameRu ? result.nameRu : result.nameEn} - Типокинопоиск`
-          if("history" in localStorage) {
-            let history = JSON.parse( localStorage.history );
-            if (!history.find((elem) => elem.nameRu === result.nameRu )) {
+          document.title = `${
+            result.nameRu ? result.nameRu : result.nameEn
+          } - Типокинопоиск`;
+          if ("history" in localStorage) {
+            let history = JSON.parse(localStorage.history);
+            if (!history.find((elem) => elem.nameRu === result.nameRu)) {
               history.unshift(result);
-            let historyJSON= JSON.stringify(history)
-            localStorage.setItem('history', historyJSON);
+              history.length = history.length > 10 ? 10 : history.length;
+              let historyJSON = JSON.stringify(history);
+              localStorage.setItem("history", historyJSON);
             }
-
-            
-        } else {
-          let history = [result];
-          let historyJSON= JSON.stringify(history)
-          localStorage.setItem('history', historyJSON);
-        }
-          //console.log(this.state);
+          } else {
+            let history = [result];
+            let historyJSON = JSON.stringify(history);
+            localStorage.setItem("history", historyJSON);
+          }
         },
         (error) => {
           console.log("error");
@@ -129,7 +129,7 @@ class Actor extends React.Component {
                       src="https://st.kp.yandex.net/images/movies/awardOscar.png"
                       alt="actorname"
                     />
-                    <p>{actors.hasAwards}</p>
+                    <p>Наград: {actors.hasAwards}</p>
                   </div>
                 ) : null}
               </div>

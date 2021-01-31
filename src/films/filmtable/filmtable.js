@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./filmtable.css";
 
 class FilmTable extends React.Component {
@@ -25,10 +26,8 @@ class FilmTable extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          console.log(this.state);
+          //console.log(this.state);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           console.log("error");
           this.setState({
@@ -39,8 +38,6 @@ class FilmTable extends React.Component {
       );
   }
   componentDidUpdate(prevProps, prevState) {
-    // only update if not match I don't know what's your data is so add a
-    // simple check like we use for strings.
     if (prevProps.id !== this.props.id) {
       this.setState({
         isLoaded: false,
@@ -51,7 +48,15 @@ class FilmTable extends React.Component {
   }
   componentDidMount() {
     this.apiHandler(this.props.id);
-    console.log(this.state);
+    //console.log(this.state);
+  }
+  personHandler(arr, proffession) {
+    let arrlength = arr
+      .concat()
+      .filter((person) => person.professionKey === proffession);
+    arrlength.length = arrlength.length > 3 ? 3 : arrlength.length;
+    //console.log(arrlength);
+    return arrlength;
   }
   render() {
     const { error, isLoaded, staff } = this.state;
@@ -69,7 +74,6 @@ class FilmTable extends React.Component {
       "VOICE_DIRECTOR",
       "UNKNOWN",
     ];
-    //console.log(this.props.film);
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
@@ -80,12 +84,6 @@ class FilmTable extends React.Component {
         </div>
       );
     } else {
-      // const staffarray = professions.map((elem) =>
-      //   staff.slice().filter((person) => person.professionKey === elem)
-      // );
-      // return staffarray.map((profession) =>
-      //   profession.length ? <div className={profession}></div> : null
-      // );
       return (
         <table className="aboutTable">
           <tr>
@@ -115,109 +113,90 @@ class FilmTable extends React.Component {
           <tr>
             <th>Режиссер</th>
             <th>
-              {staff.map((person) =>
-                person.professionKey === "DIRECTOR" ? (
+              {this.personHandler(staff, "DIRECTOR").map((person) => (
+                <NavLink to={"/name/" + person.staffId}>
                   <p>{person.nameRu}</p>
-                ) : null
-              )}
+                </NavLink>
+              ))}
             </th>
           </tr>
           <tr>
             <th>Сценарист</th>
             <th>
-              {staff.map((person) =>
-                person.professionKey === "WRITER" ? (
+              {this.personHandler(staff, "WRITER").map((person) => (
+                <NavLink to={"/name/" + person.staffId}>
                   <p>{person.nameRu}</p>
-                ) : null
-              )}
+                </NavLink>
+              ))}
             </th>
           </tr>
           <tr>
             <th>Оператор</th>
             <th>
-              {staff.map((person) =>
-                person.professionKey === "OPERATOR" ? (
+              {this.personHandler(staff, "OPERATOR").map((person) => (
+                <NavLink to={"/name/" + person.staffId}>
                   <p>{person.nameRu}</p>
-                ) : null
-              )}
+                </NavLink>
+              ))}
             </th>
           </tr>
           <tr>
             <th>Композитор</th>
             <th>
-              {staff.map((person) =>
-                person.professionKey === "COMPOSER" ? (
+              {this.personHandler(staff, "COMPOSER").map((person) => (
+                <NavLink to={"/name/" + person.staffId}>
                   <p>{person.nameRu}</p>
-                ) : null
-              )}
+                </NavLink>
+              ))}
             </th>
           </tr>
           <tr>
             <th>Художник</th>
             <th>
-              {staff.map((person) =>
-                person.professionKey === "DESIGN" ? (
+              {this.personHandler(staff, "DESIGN").map((person) => (
+                <NavLink to={"/name/" + person.staffId}>
                   <p>{person.nameRu}</p>
-                ) : null
-              )}
+                </NavLink>
+              ))}
             </th>
           </tr>
-          <tr>
-            <th>Бюджет</th>
-            <th>${this.props.film.budget}</th>
-          </tr>
-          <tr>
-            <th>Сборы в США</th>
-            <th>${this.props.film.grossUsa}</th>
-          </tr>
-          <tr>
-            <th>Сборы в мире</th>
-            <th>${this.props.film.grossWorld}</th>
-          </tr>
+          {this.props.film.budget ? (
+            <tr>
+              <th>Бюджет</th>
+              <th>{this.props.film.budget}</th>
+            </tr>
+          ) : null}
+          {this.props.film.grossUsa ? (
+            <tr>
+              <th>Сборы в США</th>
+              <th>{this.props.film.grossUsa}</th>
+            </tr>
+          ) : null}
+          {this.props.film.grossWorld ? (
+            <tr>
+              <th>Сборы в мире</th>
+              <th>{this.props.film.grossWorld}</th>
+            </tr>
+          ) : null}
           <tr>
             <th>Премьера в мире</th>
-            <th>${this.props.film.premiereWorld}</th>
+            <th>{this.props.film.premiereWorld}</th>
           </tr>
-          <tr>
-            <th>Возраст</th>
-            <th>${this.props.film.ratingAgeLimits}</th>
-          </tr>
-          <tr>
-            <th>Время</th>
-            <th>${this.props.film.filmLength}</th>
-          </tr>
+          {this.props.film.ratingAgeLimits ? (
+            <tr>
+              <th>Возраст</th>
+              <th>{this.props.film.ratingAgeLimits}</th>
+            </tr>
+          ) : null}
+          {this.props.film.filmLength ? (
+            <tr>
+              <th>Время</th>
+              <th>{this.props.film.filmLength}</th>
+            </tr>
+          ) : null}
         </table>
       );
     }
   }
 }
 export default FilmTable;
-//export default (props) => (
-//   <table className="aboutTable">
-//     <tr>
-//       <th>Карьера</th>
-//       <th>{props.actors.profession}</th>
-//     </tr>
-//     <tr>
-//       <th>Рост</th>
-//       <th>{props.actors.growth} см</th>
-//     </tr>
-//     <tr>
-//       <th>Дата рождения</th>
-//       <th>
-//         {props.actors.birthday}, {props.actors.age} лет
-//       </th>
-//     </tr>
-//     <tr>
-//       <th>Место рождения</th>
-//       <th>{props.actors.birthplace}</th>
-//     </tr>
-//     <tr>
-//       <th>Жанры</th> <th></th>
-//     </tr>
-//     <tr>
-//       <th>Всего фильмов</th>
-//       <th>{props.actors.films.length}</th>
-//     </tr>
-//   </table>
-// );

@@ -1,5 +1,5 @@
 .firstColumn {
-  width: 220px;
+  width: auto;
   padding: 40;
   height: 651px;
 }
@@ -13,7 +13,7 @@
   border-radius: 3px;
 }
 .secondColumn {
-  height: 620px;
+  height: auto;
   width: 420px;
 }
 .filmName {
@@ -21,7 +21,7 @@
 }
 .aboutTable {
   text-align: left;
-  width: 420px;
+  width: 220px;
   height: 237px;
   margin-bottom: 20px;
   border-collapse: collapse;
@@ -45,6 +45,6 @@
   border-right: none;
 }
 .thirdColumn {
-  height: 474px;
+  height: auto;
   width: 180px;
 }

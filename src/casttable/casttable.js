@@ -24,7 +24,6 @@ class CastTable extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          //console.log(this.state);
         },
         (error) => {
           console.log("error");
@@ -62,7 +61,6 @@ class CastTable extends React.Component {
       let actorArray = staff
         .slice()
         .filter((person) => person.professionKey === "ACTOR");
-      //console.log(actorArray);
       actorArray.length = actorArray.length > 10 ? 10 : actorArray.length;
       return (
         <div className="staffList">
@@ -72,7 +70,7 @@ class CastTable extends React.Component {
             </NavLink>
           ))}
           <NavLink to={"/film/" + this.props.id + "/staff"} exact>
-            Все актеры
+            Вся съемочная группа
           </NavLink>
         </div>
       );

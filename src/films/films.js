@@ -26,21 +26,22 @@ class Films extends Component {
             isLoaded: true,
             films: result.data,
           });
-          document.title=`${result.data.nameRu ? result.data.nameRu : result.data.nameEn} - Типокинопоиск`
-          if("history" in localStorage) {
-            let history = JSON.parse( localStorage.history );
-            if (!history.find((elem) => elem.nameRu === result.data.nameRu )) {
+          document.title = `${
+            result.data.nameRu ? result.data.nameRu : result.data.nameEn
+          } - Типокинопоиск`;
+          if ("history" in localStorage) {
+            let history = JSON.parse(localStorage.history);
+            if (!history.find((elem) => elem.nameRu === result.data.nameRu)) {
               history.unshift(result.data);
-            let historyJSON= JSON.stringify(history)
-            localStorage.setItem('history', historyJSON);
+              history.length = history.length > 10 ? 10 : history.length;
+              let historyJSON = JSON.stringify(history);
+              localStorage.setItem("history", historyJSON);
             }
-
-            
-        } else {
-          let history = [result.data];
-          let historyJSON= JSON.stringify(history)
-          localStorage.setItem('history', historyJSON);
-        }
+          } else {
+            let history = [result.data];
+            let historyJSON = JSON.stringify(history);
+            localStorage.setItem("history", historyJSON);
+          }
         },
         (error) => {
           console.log("error");

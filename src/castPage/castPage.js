@@ -24,10 +24,7 @@ class CastPage extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          console.log(this.state);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           console.log("error");
           this.setState({
@@ -38,8 +35,6 @@ class CastPage extends React.Component {
       );
   }
   componentDidUpdate(prevProps, prevState) {
-    // only update if not match I don't know what's your data is so add a
-    // simple check like we use for strings.
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.setState({
         isLoaded: false,
@@ -50,7 +45,7 @@ class CastPage extends React.Component {
   }
   componentDidMount() {
     this.apiHandler(this.props.match.params.id);
-    console.log(this.state);
+    //console.log(this.state);
   }
   render() {
     const { error, isLoaded, staff } = this.state;

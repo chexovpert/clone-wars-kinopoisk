@@ -27,11 +27,14 @@ class CastTable extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          let randomnum =
+            Math.floor(Math.random() * (result.films.length - 1 - 0 + 1)) + 0;
+          //console.log(randomnum);
           this.setState({
             isLoaded: true,
             movielist: result,
+            randomnum: randomnum,
           });
-          //console.log(this.state);
         },
         (error) => {
           console.log("error");
@@ -42,20 +45,11 @@ class CastTable extends React.Component {
         }
       );
   }
-  //   componentDidUpdate(prevProps, prevState) {
-  //     if (prevState.id !== this.state.recomendationList.value) {
-  //       this.setState({
-  //         isLoaded: false,
-  //         error: null,
-  //       });
-  //       this.apiHandler(this.state.recomendationList.value);
-  //     }
-  //   }
   componentDidMount() {
     this.apiHandler(this.state.recomendationList.value);
   }
   render() {
-    const { error, isLoaded, movielist } = this.state;
+    const { error, isLoaded, movielist, randomnum } = this.state;
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
@@ -66,13 +60,7 @@ class CastTable extends React.Component {
         </div>
       );
     } else {
-      //console.log(movielist);
-
-      let randomnum =
-        Math.floor(Math.random() * (movielist.films.length - 1 - 0 + 1)) + 0;
       let movie = movielist.films[randomnum];
-      console.log(movie);
-      //actorArray.length = actorArray.length > 10 ? 10 : actorArray.length;
       return (
         <div className="staffList">
           <img

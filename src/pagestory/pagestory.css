@@ -1,0 +1,13 @@
+.pageStory {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.pageStoryWrapper > p {
+  border-bottom: 1px solid orange;
+  text-align: left;
+}
+.page_story_img {
+  width: 100px;
+  height: 150px;
+}

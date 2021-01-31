@@ -1,0 +1,21 @@
+.factlist {
+  transition: all 0.3s linear;
+}
+ul.factlist li:nth-child(n + 4) {
+  display: none;
+}
+ul.factlist li {
+  border-bottom-style: solid;
+  list-style-type: disc;
+  padding: 20px;
+}
+ul.factlist li.show:nth-child(n + 4) {
+  display: list-item;
+}
+.show_hide_list {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  background: #fc0;
+}

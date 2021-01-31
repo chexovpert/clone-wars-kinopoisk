@@ -1,48 +1,101 @@
 .firstColumn {
-    width: 220px;
-    padding: 40;
-    height: 651px;
+  width: 220px;
+  padding: 40;
+  height: 651px;
 }
-.actorWrap {
-    display: flex;
-    justify-content: space-between;
+.actorTop {
+  display: flex;
+  justify-content: space-between;
 }
 .actorPic img {
-    width: 220px;
-    height: 330px;
-    border-radius: 3px;
+  width: 220px;
+  height: 330px;
+  border-radius: 3px;
 }
 .secondColumn {
-    height: 620px;
-    width: 420px;
+  height: 620px;
+  width: 420px;
 }
 .actorName {
-    text-align: left;
+  text-align: left;
 }
-.aboutTable {
-    text-align: left;
-    width: 420px;
-    height: 237px;
-	margin-bottom: 20px;
-	border-collapse: collapse; 
+/* .aboutTable {
+  text-align: left;
+  width: 420px;
+  height: 237px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
 }
 .aboutTable th {
-	font-weight: bold;
-	padding: 5px;
-	background: #efefef;
-	border: 1px solid #dddddd;
+  font-weight: bold;
+  padding: 5px;
+  background: #efefef;
+  border: 1px solid #dddddd;
 }
 .aboutTable td {
-	border: 1px solid #dddddd;
-	padding: 5px;
+  border: 1px solid #dddddd;
+  padding: 5px;
 }
-.aboutTable tr td:first-child, .aboutTable tr th:first-child {
-	border-left: none;
+.aboutTable tr td:first-child,
+.aboutTable tr th:first-child {
+  border-left: none;
 }
-.aboutTable tr td:last-child, .aboutTable tr th:last-child {
-	border-right: none;
-}
+.aboutTable tr td:last-child,
+.aboutTable tr th:last-child {
+  border-right: none;
+} */
 .thirdColumn {
-    height: 474px;
-    width: 180px;
+  height: 474px;
+  width: 180px;
 }
+/* .factlist {
+  transition: all 0.3s linear;
+}
+ul.factlist li:nth-child(n + 4) {
+  display: none;
+}
+ul.factlist li {
+  border-bottom-style: solid;
+  list-style-type: disc;
+  padding: 20px;
+}
+ul.factlist li.show:nth-child(n + 4) {
+  display: list-item;
+}
+.show_hide_list {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  background: #fc0;
+} */
+
+/* .film_list_table {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom-style: solid;
+}
+.film_rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu div {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu div:hover {
+  cursor: pointer;
+  background-color: #777;
+} */

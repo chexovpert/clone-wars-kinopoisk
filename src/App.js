@@ -1,34 +1,30 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
-import Car from "./car/car";
 import Actor from "./actors/actor";
 import Header from "./header/header";
 import Popup from "./header/popup";
+import SearchPage from "./search/searchPage";
+import Top from "./top/top";
+import { Route, Redirect, Switch } from "react-router-dom";
+import Main from "./mainPage/main";
+import FilterSearchPage from "./search/filterSearchPage";
+import FilterSearchResult from "./search/filterSearchResult";
 
 class App extends Component {
   state = {
-    cars: [
-      { name: "mazda", year: 1997 },
-      { name: "audi", year: 1997 },
-      { name: "ferrari", year: 1997 },
-    ],
-    pageTitle: "Title",
-    showCars: false,
     isLoaded: false,
     error: null,
     items: {},
+    fId: 326,
+    isFilm: true,
   };
   clickHandler(prop) {
     this.setState({
       pageTitle: prop,
     });
   }
-  toggleCars() {
-    this.setState({
-      showCars: !this.state.showCars,
-    });
-  }
+
   componentDidMount() {
     fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/66539`, {
       method: "GET",
@@ -40,15 +36,13 @@ class App extends Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          const actors = this.state.items.actors;
+          // const actors = this.state.items.actors;
           this.setState({
             isLoaded: true,
             actors: result,
           });
-          console.log(this.state);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
+
         (error) => {
           console.log("error");
           this.setState({
@@ -59,85 +53,53 @@ class App extends Component {
       );
   }
 
-  showPopup(event) {
-    console.log(event.pageX, event.pageY);
-    const popup = document.querySelector(".popup-wrap");
+  updateInfo = (id, isFilm) => {
+    this.setState({
+      fId: id,
+      isFilm: isFilm,
+    });
+  };
 
-    popup.style.top = `${event.pageY}px`;
-    popup.style.left = `${event.pageX}px`;
-    popup.style.display = "block";
+  showPopup(event) {
+    let memState;
+    const popup = document.querySelector(".popup-wrap");
+    if (popup.style.display !== "flex" || event.target !== memState) {
+      memState = event.target;
+      popup.style.top = `${event.pageY + 5}px`;
+      popup.style.left = `${event.pageX + 5}px`;
+      popup.style.display = "flex";
+    }
   }
 
   render() {
     const divStyle = {
       textAlign: "center",
     };
-    let cars = null;
-    const { error, isLoaded, items } = this.state;
-    if (this.state.showCars) {
-      cars = this.state.cars.map((car, index) => {
-        return (
-          <Car
-            key={index}
-            name={car.name}
-            year={car.year}
-            handler={this.clickHandler.bind(this, car.name)}
-          />
-        );
-      });
-    } else cars = null;
+
     return (
       <div style={divStyle}>
-        {/* <h1>{this.state.pageTitle}</h1>
-      <button onClick={this.toggleCars.bind(this)}>toggle cars title</button> */}
-        <Popup />
+        <Popup kName={this.state.fId} kFilm={this.state.isFilm} />
         <Header showPopup={this.showPopup} />
-        <Actor></Actor>
-        {/* <div style={{
-        width: '400',
-        margin: 'auto',
-        paddingTop: '20px',
-      }}>
-        {cars}
-      </div> */}
-        {/* {this.state.showCars ?
-      this.state.cars.map((car, index)=>{
-        return (
-          <Car
-            key={index}
-            name={car.name}
-            year={car.year}
-            handler={this.clickHandler.bind(this, car.name)}
-          />
-        )
-      }): null
-    } */}
-        {/* <Car name={cars[0].name} year={cars[0].year} handler={this.clickHandler.bind(this)}/>
-      <Car name={cars[1].name} year={cars[1].year} handler={this.clickHandler.bind(this)}/>
-      <Car name={cars[2].name} year={cars[2].year} handler={this.clickHandler.bind(this)}/> */}
+        <div className="wrap">
+          <Switch>
+            <Route path="/" exact component={Main} />
+            <Route
+              path="/search/:keyword/:page"
+              exact
+              render={(props) => <SearchPage showPopup={this.showPopup} chang={this.updateInfo} {...props}></SearchPage>}
+            />
+            <Route path="/top/:type/:page" component={Top} />
+            <Route path="/filtersearch" component={FilterSearchPage} exact />
+            <Route path="/filterSearchResult" render={(props) => <FilterSearchResult {...props}></FilterSearchResult>} />
+            <Route path="/actor" render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props} />} />
+            <Redirect from={"/search//1"} to={"/filtersearch"} />
+          </Switch>
+
+          {/* <Actor></Actor> */}
+        </div>
       </div>
     );
   }
 }
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

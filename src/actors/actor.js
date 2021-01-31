@@ -2,7 +2,7 @@ import React from "react";
 import "./actor.css";
 class Actor extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.id = props;
   }
 
@@ -12,6 +12,7 @@ class Actor extends React.Component {
     error: null,
   };
   componentDidMount() {
+    console.log(this.id);
     fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/37859`, {
       method: "GET",
       headers: {
@@ -59,7 +60,11 @@ class Actor extends React.Component {
             <div className="secondColumn">
               <div className="description">
                 <div className="actorName">
-                  <h1>{actors.nameRu}</h1>
+                  <h1
+                  // onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, actors.personId, false)}
+                  >
+                    {actors.nameRu}
+                  </h1>
                   <h2>{actors.nameEn}</h2>
                   <h2>О персоне</h2>
                 </div>
@@ -97,14 +102,15 @@ class Actor extends React.Component {
                 <b>Лучшие фильмы</b>
               </p>
               {this.state.actors.films.map((film) =>
-                film.general ? <p>{film.nameRu}</p> : null
+                film.general ? (
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, film.filmId, true)}>
+                    {film.nameRu}
+                  </p>
+                ) : null
               )}
               {actors.hasAwards ? (
                 <div>
-                  <img
-                    src="https://st.kp.yandex.net/images/movies/awardOscar.png"
-                    alt="actorname"
-                  />
+                  <img src="https://st.kp.yandex.net/images/movies/awardOscar.png" alt="actorname" />
                   <p>{actors.hasAwards}</p>
                 </div>
               ) : null}

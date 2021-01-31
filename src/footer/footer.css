@@ -1,0 +1,19 @@
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  background-color: gray;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+footer .svg {
+  width: 100px;
+  height: 30px;
+  padding-top: 2vh;
+}
+
+footer .rslink {
+  padding-top: 2vh;
+}

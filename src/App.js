@@ -17,6 +17,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Main from "./mainPage/main";
 import FilterSearchPage from "./search/filterSearchPage";
 import FilterSearchResult from "./search/filterSearchResult";
+import Footer from "./footer/footer"
 
 class App extends Component {
   state = {
@@ -94,6 +95,7 @@ class App extends Component {
             <Route path="/actor" render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props} />} />
             {/* <Redirect from={"/search//1"} to={"/filtersearch"} /> */}
         </div>
+        <Footer></Footer>
       </div>
     );
   }

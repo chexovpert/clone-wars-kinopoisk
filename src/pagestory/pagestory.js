@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import "./pagestory.css";
 
 class Pagestory extends React.Component {
     constructor(props) {
@@ -20,19 +21,21 @@ class Pagestory extends React.Component {
       }
       render() {
           if (this.state.historylocal) {
-              this.state.history.length = this.state.history.length > 10 ? 10 : this.state.history.length;
-              return ( this.state.history.map((page) => <div className="staffList">
+              this.state.history.length = this.state.history.length > 10 ? 10 : this.state.history.length; 
+              console.log(this.state.history);
+              return ( <div className="pageStoryWrapper">
+                <p>Вы интересовались</p>
+                <div className="pageStory">{this.state.history.map((page) => <div>
+              <NavLink to={page.filmId ? ("/film/" + page.filmId): ("/name/" + page.personId)} exact>
               <img
                 src={page.posterUrl}
                 alt={page.nameRu}
-                className="actor_table_img"
+                className="page_story_img"
               ></img>
-              <NavLink to={"/film/" + page.filmId} exact>
-                <p>{page.nameRu}</p>
               </NavLink>
-              <p>{page.nameEn}</p>
-              <p>{page.rating}</p>
-            </div> ) )
+            </div> )}
+            </div>
+            </div> )
           } else return <div className="staffList"></div>;
       }
 }

@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import Movierecomendation from "./movieRecomendation/movieRecomendation";
+import { ThemeProvider } from 'styled-components';
 
+
+const theme = {
+  background: '#f5f8fb',
+  //fontFamily: 'Helvetica Neue',
+  headerBgColor: 'black',
+  headerFontColor: '#fff',
+  headerFontSize: '15px',
+  botBubbleColor: 'black',
+  botFontColor: '#fff',
+  userBubbleColor: '#fff',
+  userFontColor: '#4a4a4a',
+};
 class Moviebot extends Component {
   render() {
     const config = {
@@ -10,6 +23,7 @@ class Moviebot extends Component {
       floating: true,
     };
     return (
+      <ThemeProvider theme={theme}>
       <ChatBot
         steps={[
           {
@@ -131,6 +145,7 @@ class Moviebot extends Component {
         ]}
         {...config}
       />
+      </ThemeProvider>
     );
   }
 }

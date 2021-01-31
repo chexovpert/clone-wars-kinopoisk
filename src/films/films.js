@@ -26,6 +26,7 @@ class Films extends Component {
             isLoaded: true,
             films: result.data,
           });
+          document.title=`${result.data.nameRu ? result.data.nameRu : result.data.nameEn} - Типокинопоиск`
           if("history" in localStorage) {
             let history = JSON.parse( localStorage.history );
             if (!history.find((elem) => elem.nameRu === result.data.nameRu )) {
@@ -95,33 +96,6 @@ class Films extends Component {
                     film={films}
                     id={this.props.match.params.id}
                   ></FilmTable>
-                  {/* <table className="aboutTable">
-                    <tr>
-                      <th>Карьера</th>
-                      <th>{actors.profession}</th>
-                    </tr>
-                    <tr>
-                      <th>Рост</th>
-                      <th>{actors.growth} см</th>
-                    </tr>
-                    <tr>
-                      <th>Дата рождения</th>
-                      <th>
-                        {actors.birthday}, {actors.age} лет
-                      </th>
-                    </tr>
-                    <tr>
-                      <th>Место рождения</th>
-                      <th>{actors.birthplace}</th>
-                    </tr>
-                    <tr>
-                      <th>Жанры</th> <th></th>
-                    </tr>
-                    <tr>
-                      <th>Всего фильмов</th>
-                      <th>{actors.films.length}</th>
-                    </tr>
-                  </table> */}
                 </div>
               </div>
               <div className="thirdColumn">

@@ -31,6 +31,7 @@ class Actor extends React.Component {
             isLoaded: true,
             actors: result,
           });
+          document.title=`${result.nameRu ? result.nameRu : result.nameEn} - Типокинопоиск`
           if("history" in localStorage) {
             let history = JSON.parse( localStorage.history );
             if (!history.find((elem) => elem.nameRu === result.nameRu )) {

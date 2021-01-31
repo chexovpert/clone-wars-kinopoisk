@@ -8,6 +8,8 @@ import Films from "./films/films";
 import CastPage from "./castPage/castPage";
 import Moviebot from "./moviebot/moviebot";
 import Pagestory from "./pagestory/pagestory"
+import ScrollTop from "./scrollbutton/scrollbutton"
+
 class App extends Component {
   state = {
     isLoaded: false,
@@ -48,6 +50,7 @@ class App extends Component {
           exact
           render={(props) => <Pagestory {...props}></Pagestory>}
         />
+        <ScrollTop></ScrollTop>
       </div>
     );
   }

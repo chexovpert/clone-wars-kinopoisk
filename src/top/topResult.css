@@ -1,19 +1,69 @@
-.search-page-result-field {
+.top-result-field {
   display: flex;
-  width: 50vw;
-  height: 15vh;
-  margin: 5px;
+  width: 600px;
+  height: 150px;
+  margin: 15px;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 252, 240);
+  border: dotted 1px green;
 }
 
-.searchpage-poster {
-  width: 10vw;
-  height: 15vh;
+.top-result-poster {
+  width: 100px;
+  height: 140px;
 }
 
-h1 {
+.top-result-title {
+  justify-content: center;
+}
+
+.top-result-title {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.top-result-title-nameEn {
+  font-size: 18px;
+}
+
+.top-result-title-nameRu {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.top-result-rating {
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  color: white;
+  position: relative;
+  top: 40px;
+  right: -90%;
+  font-size: 20px;
+}
+
+.top-result-title-genre {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.top-result-title-genre > p {
   font-size: 15px;
+  display: inline-block;
+  padding-left: 5px;
+  margin: 0;
 }
 
-p {
-  font-size: 12px;
+.top-result-title-country > p {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 15px;
 }

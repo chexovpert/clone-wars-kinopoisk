@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TopResult from "./topResult";
+import "./top.css";
 
 class Top extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class Top extends React.Component {
             pages: result.pagesCount,
           });
           this.pagesArray(this.props.match.params.page);
+          this.titleHandler(type);
         },
         (error) => {
           console.log("error");
@@ -53,6 +55,24 @@ class Top extends React.Component {
           });
         }
       );
+  }
+
+  titleHandler(type) {
+    let title = "";
+    switch (type) {
+      case "TOP_100_POPULAR_FILMS":
+        title = "100 ПОПУЛЯРНЫХ";
+        break;
+      case "TOP_250_BEST_FILMS":
+        title = "250 ЛУЧШИХ";
+        break;
+      case "TOP_AWAIT_FILMS":
+        title = "ОЖИДАЕМЫХ";
+        break;
+    }
+    this.setState({
+      title: title,
+    });
   }
 
   pagesArray(page) {
@@ -114,32 +134,37 @@ class Top extends React.Component {
   render() {
     if (this.state.isLoaded) {
       return (
-        <div className="search-page-result">
-          <p>{`Результаты поиска по запросу`}</p>
+        <div className="top-page-field">
+          <div className="top-page-title">{`ТОП ${this.state.title} ФИЛЬМОВ`}</div>
           {this.state.result.map((film) => {
             return (
-              <TopResult
-                key={film.filmId}
-                fId={film.filmId}
-                nameRu={film.nameRu}
-                nameEn={film.nameEn}
-                rating={film.rating}
-                posterUrl={film.posterUrl}
-                // showPopup={this.showPopup}
-                // chang={this.chang}
-              />
+              <div>
+                <TopResult
+                  key={film.filmId}
+                  fId={film.filmId}
+                  nameRu={film.nameRu}
+                  nameEn={film.nameEn}
+                  rating={film.rating}
+                  posterUrl={film.posterUrl}
+                  year={film.year}
+                  genre={film.genres}
+                  country={film.countries}
+                  time={film.filmLength}
+                />
+                <hr />
+              </div>
             );
           })}
-          <div className={"seachpage-pages-wrap"}>
+          <div className={"top-page-wrap"}>
             {this.state.pagesArr.map((num) => {
               if (num != "...") {
                 return (
-                  <NavLink className="searchpage-pages" to={`/top/${this.props.match.params.type}/${num}`}>
+                  <NavLink className="top-page-pages" to={`/top/${this.props.match.params.type}/${num}`}>
                     {num}
                   </NavLink>
                 );
               } else {
-                return <p className="searchpage-pages">{num}</p>;
+                return <p className="top-page-pages">{num}</p>;
               }
             })}
           </div>

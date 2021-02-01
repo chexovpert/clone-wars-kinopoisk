@@ -6,6 +6,7 @@
   padding: 0px;
   align-items: center;
   justify-content: space-between;
+  background-color: rgb(243, 252, 240);
 }
 
 .search-result-poster {
@@ -36,7 +37,7 @@
   color: white;
   position: relative;
   top: -30px;
-  left: 55px;
+  left: 62px;
 }
 
 .search-result-title-genre {

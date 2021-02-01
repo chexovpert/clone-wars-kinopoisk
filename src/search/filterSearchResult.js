@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import FilterResult from "./filterResult";
+import "./filterSearchResult.css";
 
 class FilterSearchResult extends React.Component {
   constructor(props) {
@@ -110,28 +111,33 @@ class FilterSearchResult extends React.Component {
     if (this.state.isLoaded) {
       // console.log(this.state.pagesArr);
       return (
-        <div className="search-page-result">
-          <p>{`Результаты поиска по запросу`}</p>
+        <div className="filter-search-page-result">
+          <div className="filter-search-page-title">{`Результаты поиска по параметрам`}</div>
           {this.state.films.map((film) => {
             return (
-              <FilterResult
-                key={film.filmId}
-                fId={film.filmId}
-                nameRu={film.nameRu}
-                nameEn={film.nameEn}
-                rating={film.rating}
-                posterUrl={film.posterUrl}
-                // showPopup={this.showPopup}
-                // chang={this.chang}
-              />
+              <div>
+                <FilterResult
+                  key={film.filmId}
+                  fId={film.filmId}
+                  nameRu={film.nameRu}
+                  nameEn={film.nameEn}
+                  rating={film.rating}
+                  posterUrl={film.posterUrl}
+                  year={film.year}
+                  genre={film.genres}
+                  country={film.countries}
+                  time={film.filmLength}
+                />
+                <hr />
+              </div>
             );
           })}
-          <div className={"seachpage-pages-wrap"}>
+          <div className={"filter-search-page-wrap"}>
             {this.state.pagesArr.map((num) => {
               if (num != "...") {
                 return (
                   <NavLink
-                    className="searchpage-pages"
+                    className="filter-search-page-pages"
                     to={{
                       pathname: "/filterSearchResult",
                       search: `${this.props.location.search.slice(0, -1)}${num}`,
@@ -141,7 +147,7 @@ class FilterSearchResult extends React.Component {
                   </NavLink>
                 );
               } else {
-                return <p className="searchpage-pages">{num}</p>;
+                return <p className="filter-search-page-pages">{num}</p>;
               }
             })}
           </div>

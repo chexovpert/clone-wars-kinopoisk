@@ -1,0 +1,38 @@
+.top-page-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-page-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(0, 48, 0);
+  margin: 15px 0 10px 0;
+  text-shadow: 0 1px greenyellow;
+}
+
+.top-page-text > p {
+  font-size: 17px;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.top-page-pages,
+.top-page-wrap > p {
+  width: 30px;
+  display: inline-block;
+  margin: 10px;
+  text-decoration: none;
+  font-size: larger;
+  color: black;
+}
+
+.top-page-pages {
+  border: greenyellow 1px dotted;
+}
+
+.top-page-pages.active {
+  border: green 2px solid;
+}

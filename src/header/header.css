@@ -12,7 +12,7 @@
   padding: 0;
 }
 .header-container {
-  width: 50%;
+  width: 600px;
   position: static;
   top: 0;
   left: 0;
@@ -33,6 +33,7 @@
 
 .logoTitle {
   color: whitesmoke;
+  margin-right: 30px;
 }
 .title {
   display: flex;
@@ -42,6 +43,7 @@
   height: 30px;
   background-color: azure;
   margin: 0 10px;
+  width: 50%;
 }
 
 .logo {

@@ -17,3 +17,18 @@ footer .svg {
 footer .rslink {
   padding-top: 20px;
 }
+
+.footerauthor > p {
+  margin: 5px;
+}
+
+.footerauthor > p > a {
+  text-decoration: none;
+  color: darkgreen;
+  text-shadow: 0 1px black;
+}
+
+.footerauthor > p > a:hover {
+  color: lawngreen;
+  text-shadow: 0 1px black;
+}

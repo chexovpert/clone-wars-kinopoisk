@@ -38,6 +38,7 @@ class SearchPage extends React.Component {
             pages: result.pagesCount,
           });
           this.pagesArray(this.props.match.params.page);
+          document.title = `Результаты поиска по запросу "${keyword}" - Типокинопоиск`;
         },
         (error) => {
           console.log("error");
@@ -126,7 +127,7 @@ class SearchPage extends React.Component {
   render() {
     return (
       <div className="search-page-field">
-        <form>
+        <form className="search-page-form">
           <input
             type="text"
             placeholder={`Введите название фильма`}
@@ -134,34 +135,43 @@ class SearchPage extends React.Component {
             onChange={this.searchHandler}
             value={this.state.searchPageState}
           ></input>
-          <Link to={`/search/${this.state.searchPageState}/1`}>
-            <button>{"Search"}</button>
+          <Link className="search-page-button" to={`/search/${this.state.searchPageState}/1`}>
+            <button>{"Поиск"}</button>
           </Link>
         </form>
         <div className="search-page-result">
-          <p>{`Результаты поиска по запросу ${this.props.match.params.keyword}`}</p>
+          <div className="search-page-text">
+            <p>{`Результаты поиска по запросу `}</p>
+            <p
+              style={{ fontStyle: "bolder", color: "green", textDecoration: "underline" }}
+            >{`"${this.props.match.params.keyword}"`}</p>
+          </div>
+
           {this.state.films.map((film) => {
             return (
-              <SearchPageResult
-                key={film.filmId}
-                fId={film.filmId}
-                nameRu={film.nameRu}
-                nameEn={film.nameEn}
-                rating={film.rating}
-                posterUrl={film.posterUrl}
-                year={film.year}
-                genre={film.genres}
-                country={film.countries}
-                time={film.filmLength}
-              />
+              <div>
+                <SearchPageResult
+                  key={film.filmId}
+                  fId={film.filmId}
+                  nameRu={film.nameRu}
+                  nameEn={film.nameEn}
+                  rating={film.rating}
+                  posterUrl={film.posterUrl}
+                  year={film.year}
+                  genre={film.genres}
+                  country={film.countries}
+                  time={film.filmLength}
+                />
+                <hr />
+              </div>
             );
           })}
         </div>
-        <div className={"seachpage-pages-wrap"}>
+        <div className={"search-page-wrap"}>
           {this.state.pagesArr.map((num) => {
             if (num != "...") {
               return (
-                <NavLink className="searchpage-pages" to={`/search/${this.props.match.params.keyword}/${num}`}>
+                <NavLink className="search-page-pages" to={`/search/${this.props.match.params.keyword}/${num}`}>
                   {num}
                 </NavLink>
               );

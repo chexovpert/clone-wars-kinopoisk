@@ -9,6 +9,7 @@
 .filtersearch-container {
   display: flex;
   justify-content: center;
+  height: 89.4vh;
 }
 .filtersearch-form {
   display: flex;

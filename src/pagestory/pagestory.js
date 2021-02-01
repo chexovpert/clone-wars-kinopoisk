@@ -21,28 +21,14 @@ class Pagestory extends React.Component {
   }
   render() {
     if (this.state.historylocal) {
-      // this.state.history.length =
-      //   this.state.history.length > 10 ? 10 : this.state.history.length;
-      //console.log(this.state.history);
       return (
         <div className="pageStoryWrapper">
           <p>Вы интересовались</p>
           <div className="pageStory">
             {this.state.history.map((page) => (
               <div>
-                <NavLink
-                  to={
-                    page.filmId
-                      ? "/film/" + page.filmId
-                      : "/name/" + page.personId
-                  }
-                  exact
-                >
-                  <img
-                    src={page.posterUrl}
-                    alt={page.nameRu}
-                    className="page_story_img"
-                  ></img>
+                <NavLink className="page-story-page" to={page.filmId ? "/film/" + page.filmId : "/name/" + page.personId} exact>
+                  <img src={page.posterUrl} alt={page.nameRu} className="page_story_img"></img>
                 </NavLink>
               </div>
             ))}

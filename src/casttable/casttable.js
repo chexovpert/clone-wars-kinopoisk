@@ -58,22 +58,32 @@ class CastTable extends React.Component {
         </div>
       );
     } else {
-      let actorArray = staff
-        .slice()
-        .filter((person) => person.professionKey === "ACTOR");
+      let actorArray = staff.slice().filter((person) => person.professionKey === "ACTOR");
       actorArray.length = actorArray.length > 10 ? 10 : actorArray.length;
-      return (
-        <div className="staffList">
-          {actorArray.map((actor) => (
-            <NavLink to={"/name/" + actor.staffId} exact>
-              <p>{actor.nameRu}</p>
+      console.log(actorArray);
+      if (isLoaded) {
+        return (
+          <div className="staffList">
+            {actorArray.map((actor) => (
+              <NavLink to={"/name/" + actor.staffId} exact>
+                <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, actor.staffId, false)}>
+                  {actor.nameRu}
+                </p>
+              </NavLink>
+            ))}
+            <NavLink to={"/film/" + this.props.id + "/staff"} exact>
+              Вся съемочная группа
             </NavLink>
-          ))}
-          <NavLink to={"/film/" + this.props.id + "/staff"} exact>
-            Вся съемочная группа
-          </NavLink>
-        </div>
-      );
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            Загрузка...
+            <img src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif" />
+          </div>
+        );
+      }
     }
   }
 }

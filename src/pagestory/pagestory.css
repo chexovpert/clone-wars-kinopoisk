@@ -4,10 +4,15 @@
   flex-direction: row-reverse;
 }
 .pageStoryWrapper > p {
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid rgb(0, 167, 0);
   text-align: left;
+  font-size: 20px;
 }
 .page_story_img {
   width: 100px;
   height: 150px;
+}
+
+.page-story-page {
+  margin: 10px 20px;
 }

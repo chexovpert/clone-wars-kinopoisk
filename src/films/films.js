@@ -26,9 +26,7 @@ class Films extends Component {
             isLoaded: true,
             films: result.data,
           });
-          document.title = `${
-            result.data.nameRu ? result.data.nameRu : result.data.nameEn
-          } - Типокинопоиск`;
+          document.title = `${result.data.nameRu ? result.data.nameRu : result.data.nameEn} - Типокинопоиск`;
           if ("history" in localStorage) {
             let history = JSON.parse(localStorage.history);
             if (!history.find((elem) => elem.nameRu === result.data.nameRu)) {
@@ -95,6 +93,8 @@ class Films extends Component {
                   <FilmTable
                     film={films}
                     id={this.props.match.params.id}
+                    showPopup={this.props.showPopup}
+                    chang={this.props.chang}
                   ></FilmTable>
                 </div>
               </div>
@@ -102,7 +102,7 @@ class Films extends Component {
                 <p>
                   <b>В главных ролях</b>
                 </p>
-                <CastTable id={this.props.match.params.id}></CastTable>
+                <CastTable id={this.props.match.params.id} showPopup={this.props.showPopup} chang={this.props.chang}></CastTable>
               </div>
             </div>
             <div className="filmBottom">

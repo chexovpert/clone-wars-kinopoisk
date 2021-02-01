@@ -51,9 +51,7 @@ class FilmTable extends React.Component {
     //console.log(this.state);
   }
   personHandler(arr, proffession) {
-    let arrlength = arr
-      .concat()
-      .filter((person) => person.professionKey === proffession);
+    let arrlength = arr.concat().filter((person) => person.professionKey === proffession);
     arrlength.length = arrlength.length > 3 ? 3 : arrlength.length;
     //console.log(arrlength);
     return arrlength;
@@ -115,7 +113,9 @@ class FilmTable extends React.Component {
             <th>
               {this.personHandler(staff, "DIRECTOR").map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
-                  <p>{person.nameRu}</p>
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
+                    {person.nameRu}
+                  </p>
                 </NavLink>
               ))}
             </th>
@@ -125,7 +125,9 @@ class FilmTable extends React.Component {
             <th>
               {this.personHandler(staff, "WRITER").map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
-                  <p>{person.nameRu}</p>
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
+                    {person.nameRu}
+                  </p>
                 </NavLink>
               ))}
             </th>
@@ -135,7 +137,9 @@ class FilmTable extends React.Component {
             <th>
               {this.personHandler(staff, "OPERATOR").map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
-                  <p>{person.nameRu}</p>
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
+                    {person.nameRu}
+                  </p>
                 </NavLink>
               ))}
             </th>
@@ -145,7 +149,9 @@ class FilmTable extends React.Component {
             <th>
               {this.personHandler(staff, "COMPOSER").map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
-                  <p>{person.nameRu}</p>
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
+                    {person.nameRu}
+                  </p>
                 </NavLink>
               ))}
             </th>
@@ -155,7 +161,9 @@ class FilmTable extends React.Component {
             <th>
               {this.personHandler(staff, "DESIGN").map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
-                  <p>{person.nameRu}</p>
+                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
+                    {person.nameRu}
+                  </p>
                 </NavLink>
               ))}
             </th>

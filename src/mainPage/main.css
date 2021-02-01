@@ -1,0 +1,42 @@
+.main-container {
+  height: 89.4vh;
+  background: linear-gradient(rgba(0, 10, 0, 0.6), rgba(0, 10, 0, 0.6)), url("./assets/main.jpg");
+  background-size: cover;
+  background-position: center 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: whitesmoke;
+  text-shadow: 2px 3px 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-container > h1 {
+  margin: 10px 0;
+}
+
+.main-container > h2 {
+  margin: 10px 0;
+}
+
+.main-container > h3 {
+  margin: 15px 0;
+}
+
+.main-search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.main-search-input {
+  height: 35px;
+  width: 500px;
+  border: none;
+  font-style: italic;
+}
+
+.main-button {
+  border: none;
+  height: 37px;
+  background-color: azure;
+}

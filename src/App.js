@@ -55,24 +55,30 @@ class App extends Component {
     return (
       <div style={divStyle} className="bigWrap">
         <Popup kName={this.state.fId} kFilm={this.state.isFilm} />
-        <Header showPopup={this.showPopup} />
+        <Header />
         <div className="wrap">
           <Route
             path={"/name/:id"}
             exact
             render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props}></Actor>}
           />
-          <Route path={"/film/:id"} exact render={(props) => <Films {...props}></Films>} />
-          <Route path={"/film/:id/staff"} exact render={(props) => <CastPage {...props}></CastPage>} />
+          <Route
+            path={"/film/:id"}
+            exact
+            render={(props) => <Films showPopup={this.showPopup} chang={this.updateInfo} {...props}></Films>}
+          />
+          <Route
+            path={"/film/:id/staff"}
+            exact
+            render={(props) => <CastPage showPopup={this.showPopup} chang={this.updateInfo} {...props}></CastPage>}
+          />
           <Moviebot></Moviebot>
-          <Route path={"/"} exact render={(props) => <Pagestory {...props}></Pagestory>} />
           <ScrollTop></ScrollTop>
-          {/* <Route path="/" exact component={Main} /> */}
+          <Route path="/" exact render={(props) => <Main {...props} />} />
           <Route path="/search/:keyword/:page" exact render={(props) => <SearchPage {...props}></SearchPage>} />
           <Route path="/top/:type/:page" component={Top} />
           <Route path="/filtersearch" component={FilterSearchPage} exact />
           <Route path="/filterSearchResult" render={(props) => <FilterSearchResult {...props}></FilterSearchResult>} />
-          <Route path="/actor" render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props} />} />
           {/* <Redirect from={"/search//1"} to={"/filtersearch"} /> */}
         </div>
         <Footer></Footer>

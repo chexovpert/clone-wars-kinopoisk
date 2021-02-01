@@ -3,7 +3,7 @@ footer {
   display: flex;
   justify-content: space-between;
   height: 60px;
-  background-color: gray;
+  background-color: rgb(117, 129, 115);
   position: relative;
   bottom: 0;
   left: 0;
@@ -30,5 +30,17 @@ footer .rslink {
 
 .footerauthor > p > a:hover {
   color: lawngreen;
+  text-shadow: 0 1px rgb(206, 252, 0);
+}
+
+.rslink > a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: darkgreen;
   text-shadow: 0 1px black;
+}
+
+.rslink > a:hover {
+  color: lawngreen;
+  text-shadow: 0 1px rgb(206, 252, 0);
 }

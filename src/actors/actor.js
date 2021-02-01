@@ -86,6 +86,7 @@ class Actor extends React.Component {
           </div>
         );
       } else {
+        console.log(this.props);
         return (
           <div className="actorWrap">
             <div className="actorTop">

@@ -1,6 +1,5 @@
 import React from "react";
 import "./header.css";
-import logo from "./Burger.png";
 import Search from "../search/search";
 import { NavLink } from "react-router-dom";
 
@@ -20,11 +19,10 @@ export default () => (
             </svg>
           </div>
           <ul className="burger-menu">
-            <li>
-              <NavLink className="NavLi" to="/filtersearch">
-                Поиск по фильтру
-              </NavLink>
-            </li>
+            <NavLink className="NavLi" to="/filtersearch">
+              <li>Поиск по фильтру</li>
+            </NavLink>
+
             <li>
               <NavLink className="NavLi" to="/top/TOP_250_BEST_FILMS/1">
                 Топ 250 лучших фильмов

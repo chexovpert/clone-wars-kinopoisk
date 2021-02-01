@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import FilterResult from "./filterResult";
 
 class FilterSearchResult extends React.Component {
@@ -8,6 +9,7 @@ class FilterSearchResult extends React.Component {
 
   state = {
     films: [],
+    pagesArr: [],
   };
 
   apiHandler(keyword) {
@@ -21,12 +23,12 @@ class FilterSearchResult extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          // console.log(result);
           this.setState({
             isLoaded: true,
             films: result.films,
             pages: result.pagesCount,
           });
+          this.pagesArray(this.props.location.search.slice(-1));
         },
         (error) => {
           console.log("error");
@@ -43,35 +45,116 @@ class FilterSearchResult extends React.Component {
   };
 
   componentDidUpdate = (prevId) => {
-    if (
-      prevId.match.params.keyword !== this.props.match.params.keyword ||
-      prevId.match.params.page !== this.props.match.params.page
-    ) {
-      this.apiHandler(this.props.match.params.keyword);
+    if (prevId.location.search !== this.props.location.search) {
+      this.apiHandler(this.props.location.search);
     }
   };
 
+  pagesArray(page) {
+    const pages = parseInt(page);
+    console.log(page);
+    if (this.state.pages > 20) {
+      this.setState({
+        pages: 20,
+      });
+    }
+    let array = [],
+      pagesArr = [];
+    for (let i = 1; i <= pages; i++) {
+      array.push(i);
+    }
+    if (this.state.pages < 6) {
+      const memArr = [
+        `${this.state.pages - 4}`,
+        `${this.state.pages - 3}`,
+        `${this.state.pages - 2}`,
+        `${this.state.pages - 1}`,
+        `${this.state.pages}`,
+      ];
+      pagesArr = memArr.filter((elem) => elem > 0);
+    } else {
+      if (pages < 4) {
+        pagesArr = ["1", "2", "3", "4", "5", "...", `${this.state.pages}`];
+      } else {
+        if (pages <= this.state.pages && pages > this.state.pages - 4) {
+          pagesArr = [
+            "1",
+            "...",
+            `${this.state.pages - 4}`,
+            `${this.state.pages - 3}`,
+            `${this.state.pages - 2}`,
+            `${this.state.pages - 1}`,
+            `${this.state.pages}`,
+          ];
+        } else {
+          pagesArr = [
+            "1",
+            "...",
+            `${pages - 2}`,
+            `${pages - 1}`,
+            `${pages}`,
+            `${pages + 1}`,
+            `${pages + 2}`,
+            "...",
+            `${this.state.pages}`,
+          ];
+        }
+      }
+    }
+    this.setState({
+      pagesArr: pagesArr,
+    });
+  }
+
   render() {
-    console.log(this.state.films);
-    return (
-      <div className="search-page-result">
-        <p>{`Результаты поиска по запросу`}</p>
-        {this.state.films.map((film) => {
-          return (
-            <FilterResult
-              key={film.filmId}
-              fId={film.filmId}
-              nameRu={film.nameRu}
-              nameEn={film.nameEn}
-              rating={film.rating}
-              posterUrl={film.posterUrl}
-              // showPopup={this.showPopup}
-              // chang={this.chang}
-            />
-          );
-        })}
-      </div>
-    );
+    if (this.state.isLoaded) {
+      // console.log(this.state.pagesArr);
+      return (
+        <div className="search-page-result">
+          <p>{`Результаты поиска по запросу`}</p>
+          {this.state.films.map((film) => {
+            return (
+              <FilterResult
+                key={film.filmId}
+                fId={film.filmId}
+                nameRu={film.nameRu}
+                nameEn={film.nameEn}
+                rating={film.rating}
+                posterUrl={film.posterUrl}
+                // showPopup={this.showPopup}
+                // chang={this.chang}
+              />
+            );
+          })}
+          <div className={"seachpage-pages-wrap"}>
+            {this.state.pagesArr.map((num) => {
+              if (num != "...") {
+                return (
+                  <NavLink
+                    className="searchpage-pages"
+                    to={{
+                      pathname: "/filterSearchResult",
+                      search: `${this.props.location.search.slice(0, -1)}${num}`,
+                    }}
+                  >
+                    {num}
+                  </NavLink>
+                );
+              } else {
+                return <p className="searchpage-pages">{num}</p>;
+              }
+            })}
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          Загрузка...
+          <img alt="loadinggif" src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif" />
+        </div>
+      );
+    }
   }
 }
 

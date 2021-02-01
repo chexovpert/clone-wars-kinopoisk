@@ -31,9 +31,7 @@ class Actor extends React.Component {
             isLoaded: true,
             actors: result,
           });
-          document.title = `${
-            result.nameRu ? result.nameRu : result.nameEn
-          } - Типокинопоиск`;
+          document.title = `${result.nameRu ? result.nameRu : result.nameEn} - Типокинопоиск`;
           if ("history" in localStorage) {
             let history = JSON.parse(localStorage.history);
             if (!history.find((elem) => elem.nameRu === result.nameRu)) {
@@ -76,9 +74,6 @@ class Actor extends React.Component {
   }
 
   render() {
-    {/* <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, film.filmId, true)}>
-                    {film.nameRu}
-                  </p> */}
     {
       const { error, isLoaded, actors } = this.state;
       if (error) {
@@ -87,16 +82,12 @@ class Actor extends React.Component {
         return (
           <div>
             Загрузка...
-            <img
-              alt="loadinggif"
-              src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif"
-            />
+            <img alt="loadinggif" src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif" />
           </div>
         );
       } else {
         return (
           <div className="actorWrap">
-           
             <div className="actorTop">
               <div className="firstColumn">
                 <div className="actorPic">
@@ -121,17 +112,16 @@ class Actor extends React.Component {
                   film.general ? (
                     <div>
                       <NavLink to={"/film/" + film.filmId} exact>
-                        <p>{film.nameRu}</p>
+                        <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, film.filmId, true)}>
+                          {film.nameRu}
+                        </p>
                       </NavLink>
                     </div>
                   ) : null
                 )}
                 {actors.hasAwards ? (
                   <div>
-                    <img
-                      src="https://st.kp.yandex.net/images/movies/awardOscar.png"
-                      alt="actorname"
-                    />
+                    <img src="https://st.kp.yandex.net/images/movies/awardOscar.png" alt="actorname" />
                     <p>Наград: {actors.hasAwards}</p>
                   </div>
                 ) : null}
@@ -140,11 +130,7 @@ class Actor extends React.Component {
             <div className="actorBottom">
               <Factlist facts={this.state.actors.facts}></Factlist>
               <Graph actor={this.state.actors} role={this.state.role}></Graph>
-              <Table
-                actors={this.state.actors}
-                role={this.state.role}
-                handler={this.roleHandler.bind(this)}
-              ></Table>
+              <Table actors={this.state.actors} role={this.state.role} handler={this.roleHandler.bind(this)}></Table>
             </div>
           </div>
         );

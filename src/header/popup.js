@@ -12,9 +12,9 @@ class Popup extends React.Component {
     error: null,
   };
 
-  apiHandler(id) {
+  apiHandler(id, type) {
     let prefics;
-    this.props.kFilm ? (prefics = "v2.1/films") : (prefics = "v1/staff");
+    type ? (prefics = "v2.1/films") : (prefics = "v1/staff");
     fetch(`https://kinopoiskapiunofficial.tech/api/${prefics}/${id}`, {
       method: "GET",
       headers: {
@@ -25,10 +25,17 @@ class Popup extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            result: result,
-          });
+          if (type) {
+            this.setState({
+              isLoaded: true,
+              result: result.data,
+            });
+          } else {
+            this.setState({
+              isLoaded: true,
+              result: result,
+            });
+          }
         },
         (error) => {
           console.log("error");
@@ -41,49 +48,48 @@ class Popup extends React.Component {
   }
 
   componentDidUMount = () => {
-    this.apiHandler(this.props.kName);
+    this.apiHandler(this.props.kName, this.props.kFilm);
   };
 
   componentDidUpdate = (prevId) => {
     if (prevId.kName !== this.props.kName) {
-      this.apiHandler(this.props.kName);
+      this.setState({
+        isLoaded: false,
+      });
+      this.apiHandler(this.props.kName, this.props.kFilm);
     }
   };
 
   render() {
+    console.log(this.state.result);
     if (this.state.isLoaded) {
       if (this.props.kFilm) {
         return (
-          <div className="popup-wrap" onMouseLeave={removePopup}>
-            <img className="popup-poster" src={this.state.result.data.posterUrl}></img>
+          <div id="popup-wrap" onMouseLeave={removePopup}>
+            <img className="popup-poster" src={this.state.result.posterUrl} alt="none"></img>
             <div className="popup-info">
-              <h1>{this.state.result.data.nameRu}</h1>
+              <h1>{this.state.result.nameRu}</h1>
               <p id="popup-extra">
-                {this.state.result.data.year} {this.state.result.data.nameEn}
+                {this.state.result.year} {this.state.result.nameEn}
               </p>
             </div>
           </div>
         );
       } else {
-        console.log(this.state.result);
         return (
-          <div className="popup-wrap" onMouseLeave={removePopup}>
-            {/* <img className="popup-poster" src={this.state.result.posterUrl}></img>
+          <div id="popup-wrap" onMouseLeave={removePopup}>
+            <img className="popup-poster" src={this.state.result.posterUrl} alt="none"></img>
             <div className="popup-info">
               <h1>{this.state.result.nameRu}</h1>
               <p>{this.state.result.nameEn}</p>
-              <p id="popup-extra">
-                {this.state.result.profession}
-                {this.state.result.data.nameEn}
-              </p>
-            </div> */}
-            2
+              <p id="popup-extra">{this.state.result.profession}</p>
+            </div>
           </div>
         );
       }
     } else {
       return (
-        <div className="popup-wrap" onMouseLeave={removePopup}>
+        <div id="popup-wrap" onMouseLeave={removePopup}>
           Загрузка...
         </div>
       );
@@ -92,7 +98,7 @@ class Popup extends React.Component {
 }
 
 function removePopup() {
-  const popup = document.querySelector(".popup-wrap");
+  const popup = document.getElementById("popup-wrap");
   popup.style.display = "none";
 }
 

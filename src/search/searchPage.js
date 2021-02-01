@@ -71,6 +71,7 @@ class SearchPage extends React.Component {
 
   pagesArray(page) {
     const pages = parseInt(page);
+    console.log(page);
     if (this.state.pages > 20) {
       this.setState({
         pages: 20,
@@ -81,31 +82,42 @@ class SearchPage extends React.Component {
     for (let i = 1; i <= pages; i++) {
       array.push(i);
     }
-    if (pages < 4) {
-      pagesArr = ["1", "2", "3", "4", "5", "...", `${this.state.pages}`];
+    if (this.state.pages < 6) {
+      const memArr = [
+        `${this.state.pages - 4}`,
+        `${this.state.pages - 3}`,
+        `${this.state.pages - 2}`,
+        `${this.state.pages - 1}`,
+        `${this.state.pages}`,
+      ];
+      pagesArr = memArr.filter((elem) => elem > 0);
     } else {
-      if (pages <= this.state.pages && pages > this.state.pages - 4) {
-        pagesArr = [
-          "1",
-          "...",
-          `${this.state.pages - 4}`,
-          `${this.state.pages - 3}`,
-          `${this.state.pages - 2}`,
-          `${this.state.pages - 1}`,
-          `${this.state.pages}`,
-        ];
+      if (pages < 4) {
+        pagesArr = ["1", "2", "3", "4", "5", "...", `${this.state.pages}`];
       } else {
-        pagesArr = [
-          "1",
-          "...",
-          `${pages - 2}`,
-          `${pages - 1}`,
-          `${pages}`,
-          `${pages + 1}`,
-          `${pages + 2}`,
-          "...",
-          `${this.state.pages}`,
-        ];
+        if (pages <= this.state.pages && pages > this.state.pages - 4) {
+          pagesArr = [
+            "1",
+            "...",
+            `${this.state.pages - 4}`,
+            `${this.state.pages - 3}`,
+            `${this.state.pages - 2}`,
+            `${this.state.pages - 1}`,
+            `${this.state.pages}`,
+          ];
+        } else {
+          pagesArr = [
+            "1",
+            "...",
+            `${pages - 2}`,
+            `${pages - 1}`,
+            `${pages}`,
+            `${pages + 1}`,
+            `${pages + 2}`,
+            "...",
+            `${this.state.pages}`,
+          ];
+        }
       }
     }
     this.setState({
@@ -139,8 +151,6 @@ class SearchPage extends React.Component {
                 nameEn={film.nameEn}
                 rating={film.rating}
                 posterUrl={film.posterUrl}
-                showPopup={this.showPopup}
-                chang={this.chang}
               />
             );
           })}
@@ -149,10 +159,7 @@ class SearchPage extends React.Component {
           {this.state.pagesArr.map((num) => {
             if (num != "...") {
               return (
-                <NavLink
-                  className="searchpage-pages"
-                  to={`/search/${this.props.match.params.keyword}/${num}`}
-                >
+                <NavLink className="searchpage-pages" to={`/search/${this.props.match.params.keyword}/${num}`}>
                   {num}
                 </NavLink>
               );

@@ -1,7 +1,9 @@
 .firstColumn {
   width: 220px;
   padding: 40;
-  height: 651px;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 .actorTop {
   display: flex;
@@ -13,6 +15,8 @@
   border-radius: 3px;
 }
 .secondColumn {
+  margin-left: auto;
+  margin-right: auto;
   height: 620px;
   width: 420px;
 }
@@ -47,6 +51,8 @@
 .thirdColumn {
   height: 474px;
   width: 180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* .factlist {
   transition: all 0.3s linear;

@@ -27,3 +27,6 @@ div.scrollmenu div:hover {
   cursor: pointer;
   background-color: #777;
 }
+ol.listt {
+  padding: 0;
+}

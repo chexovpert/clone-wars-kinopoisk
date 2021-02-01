@@ -96,7 +96,7 @@ class Actor extends React.Component {
       } else {
         return (
           <div className="actorWrap">
-            <h2>{this.props.match.params.id}</h2>
+           
             <div className="actorTop">
               <div className="firstColumn">
                 <div className="actorPic">

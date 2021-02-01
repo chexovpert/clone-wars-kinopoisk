@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 export default (props) => (
   <div className="header">
-    <div className="logoTitle">ТипоКинопоиск</div>
+    <NavLink to="/"><div className="logoTitle">ТипоКинопоиск</div></NavLink>
     <div className="title">
       <img src={logo} className="logo"></img>
       <ul className="burger-menu">

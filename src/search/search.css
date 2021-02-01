@@ -25,3 +25,9 @@
 .search-form {
   display: flex;
 }
+.search-button {
+  height: 31px;
+  cursor: pointer;
+    text-align: center;
+    background: whitesmoke;
+}

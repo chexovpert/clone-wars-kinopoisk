@@ -2,7 +2,7 @@ footer {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 7vh;
+  height: 60px;
   background-color: gray;
   position: relative;
   bottom: 0;
@@ -11,9 +11,9 @@ footer {
 footer .svg {
   width: 100px;
   height: 30px;
-  padding-top: 2vh;
+  padding-top: 10px;
 }
 
 footer .rslink {
-  padding-top: 2vh;
+  padding-top: 20px;
 }

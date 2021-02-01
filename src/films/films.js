@@ -79,7 +79,6 @@ class Films extends Component {
       } else {
         return (
           <div className="filmWrap">
-            <h2>{this.props.match.params.id}</h2>
             <div className="filmTop">
               <div className="firstColumn">
                 <div className="filmPic">

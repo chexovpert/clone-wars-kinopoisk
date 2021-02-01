@@ -83,20 +83,21 @@ class Search extends React.Component {
             onFocus={this.searchResultHandler}
           ></input>
           <Link to={`/search/${this.state.searchState}/1`}>
-            <button className="search-button">search</button>
+            <button className="search-button">Поиск</button>
           </Link>
         </form>
         <div className="search-result">
           <p>{`Результаты поиска по запросу ${this.state.searchState}`}</p>
           {this.state.films.map((film) => {
             return (
+              <NavLink to={"/film/" + film.filmId}>
               <Searchresult
-                key={film.filmID}
+                key={film.filmId}
                 nameRu={film.nameRu}
                 nameEn={film.nameEn}
                 rating={film.rating}
                 posterUrl={film.posterUrl}
-              />
+              /></NavLink>
             );
           })}
 

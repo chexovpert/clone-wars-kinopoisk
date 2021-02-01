@@ -1,7 +1,51 @@
 .filtersearch-wrap {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 700px;
-  align-self: center;
+  align-items: center;
+  width: 60%;
+  height: auto;
+}
+
+.filtersearch-container {
+  display: flex;
+  justify-content: center;
+}
+.filtersearch-form {
+  display: flex;
+  /* justify-content: center; */
+  font-size: larger;
+  margin: 10px 0;
+}
+
+.filtersearch-form > label {
+  margin: 0 20px;
+}
+
+.filtersearch-form > select {
+  font-size: 17px;
+  box-shadow: 0 1px 2px 1px #d8d5d5;
+}
+
+.filtersearch-title > h1 {
+  font-size: 24px;
+}
+
+.filtersearch-title {
+  font-size: larger;
+}
+
+.filtersearch-button {
+  margin: 10px 0;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px #838383;
+  background-color: rgb(250, 253, 255);
+  font-size: 20px;
+}
+
+.filtersearch-button:hover {
+  cursor: pointer;
+  background-color: rgb(3, 202, 3);
 }

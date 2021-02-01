@@ -32,7 +32,6 @@ class SearchPage extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.setState({
             isLoaded: true,
             films: result.films,
@@ -71,7 +70,6 @@ class SearchPage extends React.Component {
 
   pagesArray(page) {
     const pages = parseInt(page);
-    console.log(page);
     if (this.state.pages > 20) {
       this.setState({
         pages: 20,
@@ -151,6 +149,10 @@ class SearchPage extends React.Component {
                 nameEn={film.nameEn}
                 rating={film.rating}
                 posterUrl={film.posterUrl}
+                year={film.year}
+                genre={film.genres}
+                country={film.countries}
+                time={film.filmLength}
               />
             );
           })}

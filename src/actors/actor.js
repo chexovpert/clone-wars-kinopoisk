@@ -166,7 +166,7 @@ class Actor extends React.Component {
                           this.state.isLoadedFilm ? (
                             <React.Fragment>
                               <div className="tooltip">
-                                <img className="tooltiprating" src={this.state.film.posterUrl}></img>
+                                <img className="tooltipimg" src={this.state.film.posterUrl}></img>
                                 <div>
                                   <NavLink to={"/film/" + film.filmId}>
                                     <p>{film.nameRu ? film.nameRu : film.nameEn}</p>

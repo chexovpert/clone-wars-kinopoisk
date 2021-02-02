@@ -11,11 +11,12 @@ import Header from "./header/header";
 import Popup from "./header/popup";
 import SearchPage from "./search/searchPage";
 import Top from "./top/top";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Redirect, Switch, HashRouter } from "react-router-dom";
 import Main from "./mainPage/main";
 import FilterSearchPage from "./search/filterSearchPage";
 import FilterSearchResult from "./search/filterSearchResult";
 import Footer from "./footer/footer";
+import Page404 from "./page404/404";
 
 class App extends Component {
   state = {
@@ -53,36 +54,44 @@ class App extends Component {
       textAlign: "center",
     };
     return (
-      <div style={divStyle} className="bigWrap">
-        <Popup kName={this.state.fId} kFilm={this.state.isFilm} />
-        <Header />
-        <div className="wrap">
-          <Route
-            path={"/name/:id"}
-            exact
-            render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props}></Actor>}
-          />
-          <Route
-            path={"/film/:id"}
-            exact
-            render={(props) => <Films showPopup={this.showPopup} chang={this.updateInfo} {...props}></Films>}
-          />
-          <Route
-            path={"/film/:id/staff"}
-            exact
-            render={(props) => <CastPage showPopup={this.showPopup} chang={this.updateInfo} {...props}></CastPage>}
-          />
+      <HashRouter basename="/">
+        <div style={divStyle} className="bigWrap">
+          <Popup kName={this.state.fId} kFilm={this.state.isFilm} />
+          <Header />
           <Moviebot></Moviebot>
           <ScrollTop></ScrollTop>
-          <Route path="/" exact render={(props) => <Main {...props} />} />
-          <Route path="/search/:keyword/:page" exact render={(props) => <SearchPage {...props}></SearchPage>} />
-          <Route path="/top/:type/:page" component={Top} />
-          <Route path="/filtersearch" component={FilterSearchPage} exact />
-          <Route path="/filterSearchResult" render={(props) => <FilterSearchResult {...props}></FilterSearchResult>} />
-          {/* <Redirect from={"/search//1"} to={"/filtersearch"} /> */}
+
+          <div className="wrap">
+            <Switch>
+              <Route path="/" exact render={(props) => <Main {...props} />} />
+              <Route
+                path={"/name/:id"}
+                exact
+                render={(props) => <Actor showPopup={this.showPopup} chang={this.updateInfo} {...props}></Actor>}
+              />
+              <Route
+                path={"/film/:id"}
+                exact
+                render={(props) => <Films showPopup={this.showPopup} chang={this.updateInfo} {...props}></Films>}
+              />
+              <Route
+                path={"/film/:id/staff"}
+                exact
+                render={(props) => <CastPage showPopup={this.showPopup} chang={this.updateInfo} {...props}></CastPage>}
+              />
+
+              <Route path="/search/:keyword/:page" exact render={(props) => <SearchPage {...props}></SearchPage>} />
+              <Route path="/top/:type/:page" exact component={Top} />
+              <Route path="/filtersearch" exact component={FilterSearchPage} exact />
+              <Route path="/filterSearchResult" exact render={(props) => <FilterSearchResult {...props}></FilterSearchResult>} />
+              <Route render={() => <Page404 />} />
+              <Redirect to={"/404"} />
+            </Switch>
+          </div>
+
+          <Footer></Footer>
         </div>
-        <Footer></Footer>
-      </div>
+      </HashRouter>
     );
   }
 }

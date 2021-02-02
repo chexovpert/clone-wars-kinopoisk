@@ -34,8 +34,7 @@ th > a {
   display: inline-block;
   padding-left: 5px;
   text-decoration: none;
-    color: darkgreen;
-
+  color: darkgreen;
 }
 th > a:hover {
   color: lawngreen;
@@ -43,20 +42,22 @@ th > a:hover {
 }
 .tooltip {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: left;
+  width: 200px;
+  height: 100px;
 }
 
 .tooltipimg {
-  height: 84px;
-  width: 54px;
+  height: 100px;
+  width: 70px;
 }
 .tooltiprating {
   display: flex;
   align-items: center;
   justify-content: center;
   size: 12px;
-  height: 84px;
-  width: 54px;
+  height: 100px;
+  width: 70px;
   background-color: green;
 }

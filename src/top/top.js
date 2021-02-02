@@ -133,6 +133,7 @@ class Top extends React.Component {
 
   render() {
     if (this.state.isLoaded) {
+      document.title = `ТOП ${this.state.title} ФИЛЬМОВ - ТипоКинопоиск`;
       return (
         <div className="top-page-field">
           <div className="top-page-title">{`ТОП ${this.state.title} ФИЛЬМОВ`}</div>

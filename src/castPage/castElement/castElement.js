@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./castElement.css";
 
 export default (props) => (
-  <div className="staffList">
-    <p>{props.staff[0].professionText}</p>
+  <div className="actor_list_prof">
+    <h3>{props.staff[0].professionText}</h3>
     <ol>
       {props.staff.map((actor) => (
         <li>

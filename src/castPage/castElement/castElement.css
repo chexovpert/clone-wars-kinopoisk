@@ -1,8 +1,22 @@
+.actor_list_prof> ol > li:first-child {
+  border-top: green 2px solid;
+}
 .actor_list_table {
   display: flex;
   justify-content: end;
   text-align: left;
   border-bottom-style: solid;
+}
+
+.actor_table_name > a {
+  text-decoration: none;
+  color: darkgreen;
+  text-shadow: 0 1px black;
+}
+.actor_table_name > a:hover {
+  color: lawngreen;
+    text-shadow: 0 1px rgb(206, 252, 0);
+    text-decoration: none;
 }
 .actor_rating {
   display: flex;
@@ -28,6 +42,6 @@ div.scrollmenu div:hover {
   background-color: #777;
 }
 .actor_table_img {
-  width: 54px;
-  height: 84px;
+  width: 110px;
+  height: 170px;
 }

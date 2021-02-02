@@ -10,8 +10,8 @@
   font-size: 20px;
 }
 .page_story_img {
-  max-width: 100px;
-  max-height: 150px;
+  width: 100px;
+  height: 150px;
 }
 
 .page-story-page {

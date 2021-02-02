@@ -60,17 +60,40 @@ class FilmTable extends React.Component {
     const { error, isLoaded, staff } = this.state;
     const professions = [
       "DIRECTOR",
-      "ACTOR",
-      "PRODUCER",
       "WRITER",
       "OPERATOR",
-      "EDITOR",
       "COMPOSER",
       "DESIGN",
-      "PRODUCER_USSR",
-      "TRANSLATOR",
-      "VOICE_DIRECTOR",
-      "UNKNOWN",
+    ];
+    const professionsRu = [
+      "Режиссер",
+      "Сценарист",
+      "Оператор",
+      "Композитор",
+      "Художник",
+    ];
+    const filmprops1 = [
+      "year",
+    ];
+    const filmpropsRu1 = [
+      "Год производства",
+      
+    ];
+    const filmprops2 = [
+      "budget",
+      "grossUsa",
+      "grossWorld",
+      "premiereWorld",
+      "ratingAgeLimits",
+      "filmLength"
+    ];
+    const filmpropsRu2 = [
+      "Бюджет",
+      "Сборы в США",
+      "Сборы в мире",
+      "Премьера в мире",
+      "Возраст",
+      "Время" 
     ];
     if (error) {
       return <div>Ошибка: {error.message}</div>;
@@ -84,34 +107,35 @@ class FilmTable extends React.Component {
     } else {
       return (
         <table className="aboutTable">
-          <tr>
-            <th>Год производства</th>
-            <th>{this.props.film.year}</th>
-          </tr>
-          <tr>
+           {filmprops1.map((elem, index) => this.props.film[elem] ? <tr>
+            <th>{filmpropsRu1[index]}</th>
+            <th>{this.props.film[elem]}</th>
+          </tr> : null) }
+          {this.props.film.countries.length > 0 ? <tr>
             <th>Страна</th>
             <th>
               {this.props.film.countries.map((country) => (
                 <p>{country.country}</p>
               ))}
             </th>
-          </tr>
-          <tr>
+          </tr> : null}
+          {this.props.film.genres.length > 0 ? <tr>
             <th>Жанр</th>
             <th>
               {this.props.film.genres.map((genre) => (
                 <p>{genre.genre}</p>
               ))}
             </th>
-          </tr>
-          <tr>
+          </tr>: null}
+          {this.props.film.slogan ? <tr>
             <th>Слоган</th>
             <th>{this.props.film.slogan}</th>
           </tr>
-          <tr>
-            <th>Режиссер</th>
+          : null}
+          {professions.map((elem, index) => this.personHandler(staff, elem).length > 0 ? <tr>
+            <th>{professionsRu[index]}</th>
             <th>
-              {this.personHandler(staff, "DIRECTOR").map((person) => (
+              {this.personHandler(staff, elem).map((person) => (
                 <NavLink to={"/name/" + person.staffId}>
                   <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
                     {person.nameRu}
@@ -119,89 +143,11 @@ class FilmTable extends React.Component {
                 </NavLink>
               ))}
             </th>
-          </tr>
-          <tr>
-            <th>Сценарист</th>
-            <th>
-              {this.personHandler(staff, "WRITER").map((person) => (
-                <NavLink to={"/name/" + person.staffId}>
-                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
-                    {person.nameRu}
-                  </p>
-                </NavLink>
-              ))}
-            </th>
-          </tr>
-          <tr>
-            <th>Оператор</th>
-            <th>
-              {this.personHandler(staff, "OPERATOR").map((person) => (
-                <NavLink to={"/name/" + person.staffId}>
-                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
-                    {person.nameRu}
-                  </p>
-                </NavLink>
-              ))}
-            </th>
-          </tr>
-          <tr>
-            <th>Композитор</th>
-            <th>
-              {this.personHandler(staff, "COMPOSER").map((person) => (
-                <NavLink to={"/name/" + person.staffId}>
-                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
-                    {person.nameRu}
-                  </p>
-                </NavLink>
-              ))}
-            </th>
-          </tr>
-          <tr>
-            <th>Художник</th>
-            <th>
-              {this.personHandler(staff, "DESIGN").map((person) => (
-                <NavLink to={"/name/" + person.staffId}>
-                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
-                    {person.nameRu}
-                  </p>
-                </NavLink>
-              ))}
-            </th>
-          </tr>
-          {this.props.film.budget ? (
-            <tr>
-              <th>Бюджет</th>
-              <th>{this.props.film.budget}</th>
-            </tr>
-          ) : null}
-          {this.props.film.grossUsa ? (
-            <tr>
-              <th>Сборы в США</th>
-              <th>{this.props.film.grossUsa}</th>
-            </tr>
-          ) : null}
-          {this.props.film.grossWorld ? (
-            <tr>
-              <th>Сборы в мире</th>
-              <th>{this.props.film.grossWorld}</th>
-            </tr>
-          ) : null}
-          <tr>
-            <th>Премьера в мире</th>
-            <th>{this.props.film.premiereWorld}</th>
-          </tr>
-          {this.props.film.ratingAgeLimits ? (
-            <tr>
-              <th>Возраст</th>
-              <th>{this.props.film.ratingAgeLimits}</th>
-            </tr>
-          ) : null}
-          {this.props.film.filmLength ? (
-            <tr>
-              <th>Время</th>
-              <th>{this.props.film.filmLength}</th>
-            </tr>
-          ) : null}
+          </tr>: null )}
+          {filmprops2.map((elem, index) => this.props.film[elem] ? <tr>
+            <th>{filmpropsRu2[index]}</th>
+            <th>{this.props.film[elem]}</th>
+          </tr> : null) }
         </table>
       );
     }

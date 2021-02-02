@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter, Redirect } from "react-router-dom";
 import "./search.css";
 import Searchresult from "./searchresult";
 
@@ -73,7 +73,12 @@ class Search extends React.Component {
   };
 
   render() {
-    console.log(this.state.films);
+    if (this.state.error) {
+      this.setState({
+        error: null,
+      });
+      return <Redirect to="/404" />;
+    }
     return (
       <div className="search-field">
         <form className={"search-form"}>

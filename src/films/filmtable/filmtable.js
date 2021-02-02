@@ -40,7 +40,6 @@ class FilmTable extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          console.log(this.state.staff);
         },
         (error) => {
           console.log("error");
@@ -62,12 +61,12 @@ class FilmTable extends React.Component {
   }
   componentDidMount() {
     this.apiHandler(this.props.id);
-    //console.log(this.state);
+ 
   }
   personHandler(arr, proffession) {
     let arrlength = arr.concat().filter((person) => person.professionKey === proffession);
     arrlength.length = arrlength.length > 3 ? 3 : arrlength.length;
-    //console.log(arrlength);
+   
     return arrlength;
   }
   render() {

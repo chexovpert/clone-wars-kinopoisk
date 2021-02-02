@@ -1,5 +1,6 @@
 import React from "react";
 import CastElement from "./castElement/castElement";
+import {Redirect} from "react-router-dom"
 class CastPage extends React.Component {
   constructor(props) {
     super();
@@ -65,7 +66,7 @@ class CastPage extends React.Component {
       "UNKNOWN",
     ];
     if (error) {
-      return <div>Ошибка: {error.message}</div>;
+      return <Redirect to="/404" />;
     } else if (!isLoaded) {
       return (
         <div>

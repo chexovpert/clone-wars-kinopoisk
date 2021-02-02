@@ -61,7 +61,6 @@ class Popup extends React.Component {
   };
 
   render() {
-    console.log(this.state.result);
     if (this.state.isLoaded) {
       if (this.props.kFilm) {
         return (

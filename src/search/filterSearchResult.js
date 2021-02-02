@@ -53,7 +53,7 @@ class FilterSearchResult extends React.Component {
 
   pagesArray(page) {
     const pages = parseInt(page);
-    console.log(page);
+
     if (this.state.pages > 20) {
       this.setState({
         pages: 20,

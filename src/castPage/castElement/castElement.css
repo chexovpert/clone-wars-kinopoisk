@@ -2,12 +2,27 @@
   border-top: green 2px solid;
 }
 .actor_list_table {
-  display: flex;
+  /* display: flex;
   justify-content: end;
   text-align: left;
-  border-bottom-style: solid;
+  border-bottom-style: solid; */
+  margin: auto;
+    display: flex;
+    width: 600px;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(243, 252, 240);
+    border: dotted 1px green;
 }
 
+.actor_table_name {
+  width: 160px;
+  height: 130px;
+}
 .actor_table_name > a {
   text-decoration: none;
   color: darkgreen;

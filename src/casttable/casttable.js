@@ -72,7 +72,6 @@ class CastTable extends React.Component {
     } else {
       let actorArray = staff.slice().filter((person) => person.professionKey === "ACTOR");
       actorArray.length = actorArray.length > 10 ? 10 : actorArray.length;
-      console.log(actorArray);
       if (isLoaded) {
         return (
           <div className="staffList">

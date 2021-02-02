@@ -18,7 +18,7 @@ export default (props) => (
               <NavLink to={"/name/" + actor.staffId} exact>
                 <p >{actor.nameRu ? actor.nameRu : actor.nameEn}</p>
               </NavLink>
-
+              <p >{actor.nameEn ? actor.nameEn : null}</p>
               <p>{actor.description}</p>
             </div>
           </div>

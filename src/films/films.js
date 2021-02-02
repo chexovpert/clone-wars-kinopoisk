@@ -3,6 +3,7 @@ import "./films.css";
 import Factlist from "../factlist/factlist";
 import CastTable from "../casttable/casttable";
 import FilmTable from "./filmtable/filmtable";
+import {Redirect} from "react-router-dom"
 class Films extends Component {
   constructor(props) {
     super();
@@ -60,13 +61,15 @@ class Films extends Component {
     }
   }
   componentDidMount() {
+
     this.apiHandler(this.props.match.params.id);
   }
   render() {
     {
       const { error, isLoaded, films } = this.state;
       if (error) {
-        return <div>Ошибка: {error.message}</div>;
+        return <Redirect to="/404" />
+        // <div>Ошибка: {error.message}</div>;
       } else if (!isLoaded) {
         return (
           <div>

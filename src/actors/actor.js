@@ -5,16 +5,16 @@ import Table from "../table/table";
 import Factlist from "../factlist/factlist";
 import ActorTable from "./actortable/actortable";
 import { NavLink } from "react-router-dom";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const HtmlTooltip = withStyles((theme) => ({
   tooltip: {
-    backgroundColor: '#f5f5f9',
-    color: 'rgba(0, 0, 0, 0.87)',
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
     maxWidth: 220,
     fontSize: theme.typography.pxToRem(12),
-    border: '1px solid #dadde9',
+    border: "1px solid #dadde9",
   },
 }))(Tooltip);
 class Actor extends React.Component {
@@ -25,8 +25,10 @@ class Actor extends React.Component {
   state = {
     actors: null,
     isLoaded: false,
+    isLoadedFilm: false,
     error: null,
     role: "ACTOR",
+    popupFilmId: "",
   };
   apiHandler(link) {
     fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff/${link}`, {
@@ -68,32 +70,38 @@ class Actor extends React.Component {
       );
   }
 
-  // apiHandlerFilm(link) {
-  //   fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${link}`, {
-  //     method: "GET",
-  //     headers: {
-  //       accept: "application/json",
-  //       "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then(
-  //       (result) => {
-  //         this.setState({
-  //           isLoadedFilm: true,
-  //           film: result,
-  //         });
-  //         console.log(result)
-  //       },
-  //       (errorFilm) => {
-  //         console.log("error");
-  //         this.setState({
-  //           isLoadedFilm: true,
-  //           errorFilm,
-  //         });
-  //       }
-  //     );
-  // }
+  mover(id) {
+    this.setState({
+      popupFilmId: id,
+    });
+  }
+
+  apiHandlerFilm(link) {
+    fetch(`https://kinopoiskapiunofficial.tech/api/v2.1/films/${link}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": "d900330b-700e-447a-905a-d5b8497d1cc8",
+      },
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoadedFilm: true,
+            film: result.data,
+          });
+        },
+        (errorFilm) => {
+          console.log("error");
+          this.setState({
+            isLoadedFilm: true,
+            errorFilm,
+          });
+        }
+      );
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.setState({
@@ -101,6 +109,9 @@ class Actor extends React.Component {
         error: null,
       });
       this.apiHandler(this.props.match.params.id);
+    }
+    if (prevState.popupFilmId !== this.state.popupFilmId) {
+      this.apiHandlerFilm(this.state.popupFilmId);
     }
   }
   componentDidMount() {
@@ -125,7 +136,6 @@ class Actor extends React.Component {
           </div>
         );
       } else {
-        console.log(this.props);
         return (
           <div className="actorWrap">
             <div className="actorTop">
@@ -151,23 +161,29 @@ class Actor extends React.Component {
                 {this.state.actors.films.map((film) =>
                   film.general ? (
                     <div>
-                      <HtmlTooltip title={
-                <React.Fragment>
-                  <div className="tooltip">
-                  <div className="tooltiprating">{film.rating}</div>
-                  <div>
-                  <NavLink to={"/film/" + film.filmId}>
-                  <p>{film.nameRu ? film.nameRu : film.nameEn}</p></NavLink>
-                  <p>{film.nameEn ? film.nameEn : null}</p>
-                  </div>
-                  </div>
-                </React.Fragment>
-              } interactive>
-                      <NavLink to={"/film/" + film.filmId} exact>
-                        <p>
-                          {film.nameRu}
-                        </p>
-                      </NavLink>
+                      <HtmlTooltip
+                        title={
+                          this.state.isLoadedFilm ? (
+                            <React.Fragment>
+                              <div className="tooltip">
+                                <img className="tooltiprating" src={this.state.film.posterUrl}></img>
+                                <div>
+                                  <NavLink to={"/film/" + film.filmId}>
+                                    <p>{film.nameRu ? film.nameRu : film.nameEn}</p>
+                                  </NavLink>
+                                  <p>{film.nameEn ? film.nameEn : null}</p>
+                                </div>
+                              </div>
+                            </React.Fragment>
+                          ) : (
+                            <div />
+                          )
+                        }
+                        interactive
+                      >
+                        <NavLink to={"/film/" + film.filmId} exact onMouseOver={this.mover.bind(this, film.filmId)}>
+                          <p>{film.nameRu}</p>
+                        </NavLink>
                       </HtmlTooltip>
                     </div>
                   ) : null

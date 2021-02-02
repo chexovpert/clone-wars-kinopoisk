@@ -19,31 +19,7 @@
 .filmName {
   text-align: left;
 }
-.aboutTable {
-  text-align: left;
-  width: 220px;
-  height: 237px;
-  margin-bottom: 20px;
-  border-collapse: collapse;
-}
-.aboutTable th {
-  font-weight: bold;
-  padding: 5px;
-  background: #efefef;
-  border: 1px solid #dddddd;
-}
-.aboutTable td {
-  border: 1px solid #dddddd;
-  padding: 5px;
-}
-.aboutTable tr td:first-child,
-.aboutTable tr th:first-child {
-  border-left: none;
-}
-.aboutTable tr td:last-child,
-.aboutTable tr th:last-child {
-  border-right: none;
-}
+
 .thirdColumn {
   height: auto;
   width: 180px;

@@ -64,7 +64,8 @@ class Table extends React.Component {
                       <p>{film.nameEn ? film.nameRu : null}</p>
                       <p>{film.description}</p>
                     </div>
-                    <div className="film_rating">{film.rating}</div>
+                    {film.rating ? <div className="film_rating">{film.rating}</div> : null }
+                    
                   </div>
                 </li>
               ) : null

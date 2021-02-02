@@ -1,0 +1,13 @@
+
+  .thirdColumn > div > a  {
+    text-decoration: none;
+    color: darkgreen;
+    text-shadow: 0 1px black;
+  }
+  
+.thirdColumn > div > a:hover {
+    
+    color: lawngreen;
+    text-shadow: 0 1px rgb(206, 252, 0);
+    text-decoration: none;
+  }

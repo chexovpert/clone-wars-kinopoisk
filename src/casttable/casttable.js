@@ -1,5 +1,5 @@
 import React from "react";
-//import "./casttable.css";
+import "./casttable.css";
 import { NavLink } from "react-router-dom";
 class CastTable extends React.Component {
   constructor(props) {
@@ -66,13 +66,13 @@ class CastTable extends React.Component {
           <div className="staffList">
             {actorArray.map((actor) => (
               <NavLink to={"/name/" + actor.staffId} exact>
-                <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, actor.staffId, false)}>
+                <p>
                   {actor.nameRu}
                 </p>
               </NavLink>
             ))}
             <NavLink to={"/film/" + this.props.id + "/staff"} exact>
-              Вся съемочная группа
+              <h3>Вся съемочная группа</h3>
             </NavLink>
           </div>
         );

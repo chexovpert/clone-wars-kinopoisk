@@ -1,13 +1,30 @@
 .film_list_table {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: left;
   border-bottom-style: solid;
+}
+.film_table_name > a {
+  text-decoration: none;
+  color: darkgreen;
+}
+.film_table_name > a:hover {
+
+  color: lawngreen;
+  text-decoration: none;
 }
 .film_rating {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 35px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    /* position: relative;
+    top: -30px;
+    left: 62px; */
 }
 div.scrollmenu {
   background-color: #333;

@@ -32,7 +32,7 @@ class Graph extends React.Component {
     let role = this.props.role;
 
     let filmtype = actor.films.filter((film) =>
-      film.professionKey === role && film.rating ? film : null
+      film.professionKey === role && film.rating && film.rating > 0 ? film : null
     );
     let filmlabel = filmtype.map((film) =>
       film.nameRu ? film.nameRu : film.nameEn

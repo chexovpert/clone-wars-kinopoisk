@@ -3,6 +3,7 @@
   padding: 40;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2em;
   
 }
 .actorTop {
@@ -49,10 +50,11 @@
   border-right: none;
 } */
 .thirdColumn {
-  height: 474px;
-  width: 180px;
+  height: auto;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0.67em;
 }
 /* .factlist {
   transition: all 0.3s linear;

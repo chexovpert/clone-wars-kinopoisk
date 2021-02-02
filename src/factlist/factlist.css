@@ -1,5 +1,7 @@
 .factlist {
   transition: all 0.3s linear;
+  margin: 0;
+  padding-bottom: 20px;
 }
 ul.factlist li:nth-child(n + 4) {
   display: none;

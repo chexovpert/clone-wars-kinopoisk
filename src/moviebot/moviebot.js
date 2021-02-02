@@ -20,6 +20,10 @@ class Moviebot extends Component {
       width: "400px",
       height: "500px",
       floating: true,
+      floatingStyle: {
+        bottom: "72px",
+        border: "1px solid white" 
+      }
     };
     return (
       <ThemeProvider theme={theme}>

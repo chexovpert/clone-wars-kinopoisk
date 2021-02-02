@@ -30,7 +30,12 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.title-container > a {
+  text-decoration: none;
+}
+.title-container > a:hover > .logoTitle {
+  color: gray;
+}
 .logoTitle {
   color: whitesmoke;
   margin-right: 30px;

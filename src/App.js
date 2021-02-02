@@ -5,7 +5,7 @@ import Actor from "./actors/actor";
 import Films from "./films/films";
 import CastPage from "./castPage/castPage";
 import Moviebot from "./moviebot/moviebot";
-import Pagestory from "./pagestory/pagestory";
+//import Pagestory from "./pagestory/pagestory";
 import ScrollTop from "./scrollbutton/scrollbutton";
 import Header from "./header/header";
 import Popup from "./header/popup";

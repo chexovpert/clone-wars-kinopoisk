@@ -8,20 +8,23 @@
 .aboutTable th {
   font-weight: bold;
   padding: 5px;
-  background: #efefef;
-  border: 1px solid #dddddd;
+  /* background: #efefef; */
+  border-bottom: 1px solid #dddddd;
 }
 .aboutTable td {
-  border: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
   padding: 5px;
 }
 .aboutTable tr td:first-child,
 .aboutTable tr th:first-child {
   border-left: none;
+  border-right: none;
+  font-weight: normal;
 }
 .aboutTable tr td:last-child,
 .aboutTable tr th:last-child {
   border-right: none;
+  border-left: none;
 }
 th > p {
   display: inline-block;
@@ -30,4 +33,11 @@ th > p {
 th > a {
   display: inline-block;
   padding-left: 5px;
+  text-decoration: none;
+    color: darkgreen;
+
+}
+th > a:hover {
+  color: lawngreen;
+  text-decoration: none;
 }

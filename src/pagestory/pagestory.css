@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
+  max-width: 100%;
 }
 .pageStoryWrapper > p {
   border-bottom: 1px solid rgb(0, 167, 0);
@@ -9,10 +10,10 @@
   font-size: 20px;
 }
 .page_story_img {
-  width: 100px;
-  height: 150px;
+  max-width: 100px;
+  max-height: 150px;
 }
 
 .page-story-page {
-  margin: 10px 20px;
+  margin: auto;
 }

@@ -1,3 +1,12 @@
+
+## Deploy
+
+[ТипоКинопоиск](https://chexovpert.github.io/clone-wars-kinopoisk/#/)
+
+## Статья
+
+(WIP)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

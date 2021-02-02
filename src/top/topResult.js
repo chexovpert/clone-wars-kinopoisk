@@ -12,7 +12,7 @@ export default (props) => (
       <NavLink className="top-result-title-nameRu" to={`/film/${props.fId}`}>
         <div>{props.nameRu ? props.nameRu : props.nameEn}</div>
       </NavLink>
-      <div className="top-result-title-nameEn">{`${props.year}    ${props.nameEn}`}</div>
+      <div className="top-result-title-nameEn">{`${props.year}    ${props.nameEn ? props.nameEn : ""}`}</div>
       <div className="top-result-title-country">
         <p>{"Страна: "}</p>
         {props.country.map((elem) => (

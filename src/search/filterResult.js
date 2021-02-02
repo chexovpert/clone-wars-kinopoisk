@@ -12,7 +12,7 @@ export default (props) => (
       <NavLink className="filter-result-title-nameRu" to={`/film/${props.fId}`}>
         <div>{props.nameRu ? props.nameRu : props.nameEn}</div>
       </NavLink>
-      <div className="filter-result-title-nameEn">{`${props.year}    ${props.nameEn}`}</div>
+      <div className="filter-result-title-nameEn">{`${props.year}    ${props.nameEn ? props.nameEn : ""}`}</div>
       <div className="filter-result-title-country">
         <p>{"Страна: "}</p>
         {props.country.map((elem) => (
@@ -25,7 +25,9 @@ export default (props) => (
           <p>{elem.genre}</p>
         ))}
       </div>
-      <div className="filter-result-title-time">{`Продолжительность: ${props.time}`}</div>
+      <div className="filter-result-title-time">
+        {props.time ? <div className="top-result-title-time">{`Продолжительность: ${props.time}`}</div> : <div />}
+      </div>
     </div>
   </div>
 );

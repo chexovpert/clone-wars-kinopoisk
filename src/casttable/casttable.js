@@ -1,6 +1,18 @@
 import React from "react";
 import "./casttable.css";
 import { NavLink } from "react-router-dom";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}))(Tooltip);
 class CastTable extends React.Component {
   constructor(props) {
     super();
@@ -65,11 +77,24 @@ class CastTable extends React.Component {
         return (
           <div className="staffList">
             {actorArray.map((actor) => (
+              <HtmlTooltip title={
+                <React.Fragment>
+                  <div className="tooltip">
+                  <img className="tooltipimg" src={actor.posterUrl}></img>
+                  <div>
+                  <NavLink to={"/name/" + actor.staffId}>
+                  <p>{actor.nameRu ? actor.nameRu : actor.nameEn}</p></NavLink>
+                  <p>{actor.professionText ? actor.professionText : null}</p>
+                  </div>
+                  </div>
+                </React.Fragment>
+              } interactive>
               <NavLink to={"/name/" + actor.staffId} exact>
                 <p>
                   {actor.nameRu}
                 </p>
               </NavLink>
+              </HtmlTooltip>
             ))}
             <NavLink to={"/film/" + this.props.id + "/staff"} exact>
               <h3>Вся съемочная группа</h3>

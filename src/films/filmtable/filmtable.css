@@ -41,3 +41,22 @@ th > a:hover {
   color: lawngreen;
   text-decoration: none;
 }
+.tooltip {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.tooltipimg {
+  height: 84px;
+  width: 54px;
+}
+.tooltiprating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  size: 12px;
+  height: 84px;
+  width: 54px;
+  background-color: green;
+}

@@ -16,7 +16,7 @@ export default (props) => (
             ></img>
             <div className="actor_table_name">
               <NavLink to={"/name/" + actor.staffId} exact>
-                <p>{actor.nameRu ? actor.nameRu : actor.nameEn}</p>
+                <p >{actor.nameRu ? actor.nameRu : actor.nameEn}</p>
               </NavLink>
 
               <p>{actor.description}</p>

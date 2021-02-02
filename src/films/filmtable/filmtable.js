@@ -1,7 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./filmtable.css";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 
+
+
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}))(Tooltip);
 class FilmTable extends React.Component {
   constructor(props) {
     super();
@@ -26,7 +40,7 @@ class FilmTable extends React.Component {
             isLoaded: true,
             staff: result,
           });
-          //console.log(this.state);
+          console.log(this.state.staff);
         },
         (error) => {
           console.log("error");
@@ -136,11 +150,24 @@ class FilmTable extends React.Component {
             <th>{professionsRu[index]}</th>
             <th>
               {this.personHandler(staff, elem).map((person) => (
+                <HtmlTooltip title={
+                  <React.Fragment>
+                    <div className="tooltip">
+                    <img className="tooltipimg" src={person.posterUrl}></img>
+                    <div>
+                    <NavLink to={"/name/" + person.staffId}>
+                    <p>{person.nameRu ? person.nameRu : person.nameEn}</p></NavLink>
+                    <p>{person.professionText ? person.professionText : null}</p>
+                    </div>
+                    </div>
+                  </React.Fragment>
+                } interactive>
                 <NavLink to={"/name/" + person.staffId}>
-                  <p onMouseEnter={this.props.showPopup} onMouseOver={this.props.chang.bind(this, person.staffId, false)}>
-                    {person.nameRu}
+                  <p>
+                  {person.nameRu ? person.nameRu : person.nameEn}
                   </p>
                 </NavLink>
+                </HtmlTooltip>
               ))}
             </th>
           </tr>: null )}

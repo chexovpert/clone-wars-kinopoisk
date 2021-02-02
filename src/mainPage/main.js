@@ -11,14 +11,21 @@ class Main extends React.Component {
   state = {
     // searchPageState: "",
   };
-
+  
   searchHandler = (event) => {
     this.setState({
       searchPageState: event.target.value,
     });
   };
 
+  componentDidMount() {
+    document.title = `Типокинопоиск`;
+  }
+  componentDidUpdate() {
+    document.title = `Типокинопоиск`;
+  }
   render() {
+    
     return (
       <div style={{ textAlign: "center" }} className="main-container">
         <h1>{`Добро пожаловать на наш ТипоКинопоиск`}</h1>

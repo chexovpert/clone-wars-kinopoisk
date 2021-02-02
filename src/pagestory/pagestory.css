@@ -2,6 +2,8 @@
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
+  /* flex-wrap: wrap; */
+  overflow: hidden;
   max-width: 100%;
 }
 .pageStoryWrapper > p {
@@ -15,5 +17,5 @@
 }
 
 .page-story-page {
-  margin: auto;
+  margin: 10px 20px;
 }

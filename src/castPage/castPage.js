@@ -33,6 +33,7 @@ class CastPage extends React.Component {
           });
         }
       );
+      document.title = `Все актеры - Типокинопоиск`;
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.id !== this.props.match.params.id) {

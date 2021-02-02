@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/chexovpert-JS2020Q3/build/static/css/main.417cc401.chunk.css",
-    "main.js": "/chexovpert-JS2020Q3/build/static/js/main.09deed19.chunk.js",
-    "main.js.map": "/chexovpert-JS2020Q3/build/static/js/main.09deed19.chunk.js.map",
+    "main.js": "/chexovpert-JS2020Q3/build/static/js/main.b87f2800.chunk.js",
+    "main.js.map": "/chexovpert-JS2020Q3/build/static/js/main.b87f2800.chunk.js.map",
     "runtime-main.js": "/chexovpert-JS2020Q3/build/static/js/runtime-main.76d3f349.js",
     "runtime-main.js.map": "/chexovpert-JS2020Q3/build/static/js/runtime-main.76d3f349.js.map",
-    "static/js/2.7e258772.chunk.js": "/chexovpert-JS2020Q3/build/static/js/2.7e258772.chunk.js",
-    "static/js/2.7e258772.chunk.js.map": "/chexovpert-JS2020Q3/build/static/js/2.7e258772.chunk.js.map",
+    "static/js/2.31309750.chunk.js": "/chexovpert-JS2020Q3/build/static/js/2.31309750.chunk.js",
+    "static/js/2.31309750.chunk.js.map": "/chexovpert-JS2020Q3/build/static/js/2.31309750.chunk.js.map",
     "static/js/3.906c86cf.chunk.js": "/chexovpert-JS2020Q3/build/static/js/3.906c86cf.chunk.js",
     "static/js/3.906c86cf.chunk.js.map": "/chexovpert-JS2020Q3/build/static/js/3.906c86cf.chunk.js.map",
     "index.html": "/chexovpert-JS2020Q3/build/index.html",
     "static/css/main.417cc401.chunk.css.map": "/chexovpert-JS2020Q3/build/static/css/main.417cc401.chunk.css.map",
-    "static/js/2.7e258772.chunk.js.LICENSE.txt": "/chexovpert-JS2020Q3/build/static/js/2.7e258772.chunk.js.LICENSE.txt",
+    "static/js/2.31309750.chunk.js.LICENSE.txt": "/chexovpert-JS2020Q3/build/static/js/2.31309750.chunk.js.LICENSE.txt",
     "static/media/1579194125_pressa_tv_black-back.e5f66ed6.jpeg": "/chexovpert-JS2020Q3/build/static/media/1579194125_pressa_tv_black-back.e5f66ed6.jpeg",
     "static/media/1579194167_pressa_tv_moody-misty.c2eb1a7f.jpeg": "/chexovpert-JS2020Q3/build/static/media/1579194167_pressa_tv_moody-misty.c2eb1a7f.jpeg",
     "static/media/1579194204_pressa_tv_orange-and-blue-action.c3e0187c.jpeg": "/chexovpert-JS2020Q3/build/static/media/1579194204_pressa_tv_orange-and-blue-action.c3e0187c.jpeg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.76d3f349.js",
-    "static/js/2.7e258772.chunk.js",
+    "static/js/2.31309750.chunk.js",
     "static/css/main.417cc401.chunk.css",
-    "static/js/main.09deed19.chunk.js"
+    "static/js/main.b87f2800.chunk.js"
   ]
 }

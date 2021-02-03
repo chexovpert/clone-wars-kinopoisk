@@ -1,12 +1,27 @@
 # Rs-clone ТипоКинопоиск
+Финальный таск Rs.School JS
+[Ссылка](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/rsclone/rsclone.md)
+
+## Screenshot
+
+
 
 ## Deploy
 
 [ТипоКинопоиск](https://chexovpert.github.io/clone-wars-kinopoisk/#/)
 
+## сдача/дедлайн
+
+03.02.2021/03.02.2021
+
 ## Статья
 
 [Ссылка на статью](https://chexovpert.medium.com/rs-clone-%D1%82%D0%B8%D0%BF%D0%BE%D0%BA%D0%B8%D0%BD%D0%BE%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-bcafa59f24d)
+Короткое видео с обзором основного функционала присутствует в статье
+
+## Видео для проверяющих
+
+WIP (Залью до выходных)
 
 ## Реализованный функционал
 
@@ -58,6 +73,4 @@
 
 Суммарно: **320 + 10 баллов**
 
-## Видео для проверяющих
 
-WIP

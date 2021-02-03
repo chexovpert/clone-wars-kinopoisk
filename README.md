@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-![Project screenshot](main.png)
+![Project screenshot](./readme/main.PNG)
 
 ## Deploy
 

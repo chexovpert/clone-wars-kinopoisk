@@ -1,3 +1,4 @@
+# Rs-clone ТипоКинопоиск
 
 ## Deploy
 
@@ -5,75 +6,58 @@
 
 ## Статья
 
-(WIP)
+[Ссылка на статью](https://chexovpert.medium.com/rs-clone-%D1%82%D0%B8%D0%BF%D0%BE%D0%BA%D0%B8%D0%BD%D0%BE%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-bcafa59f24d)
 
-# Getting Started with Create React App
+## Реализованный функционал
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Реализован routing (без перезагрузки страницы приложения) **(20 баллов)**
 
-## Available Scripts
+2. Приложение выполнено в едином стиле, для стилизации используется Bootstrap/Material UI/Ant design/etc, а имеено для туллтипов на странице фильмов и на кнопках на главной странице **(20 баллов)**
 
-In the project directory, you can run:
+3. Есть статистика, которая отображает прогресс работы приложения, процент выполнения задания etc - история посещения страниц на главной странице **(20 баллов)**
 
-### `npm start`
+4. Сохранение и загрузка чего-либо с использованием Local storage - история посещения хранится в Local storage **(10 баллов)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. Использован webpack - встроен в create-react-app **(10 баллов)**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+6. Понятный, читаемый код. Имена переменных и функций отражают то что в них содержится/то что они делают. Функция выполняет одно действие. Повторение логики сведено к минимуму. **(20 баллов)**
 
-### `npm test`
+7. Приложение отображает какую-либо статистику/графики/таблицы, данные для которых получает от бекенда - по сути все приложение, графики есть на странице актера, а таблицы/списки на остальных страницах **(20 баллов)**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+8. Приложение написано на React с помощью Create React App **(20 баллов)**
 
-### `npm run build`
+9. Главная страница **(10 баллов)**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+10. Простой чат-бот для рекомендации случайного фильма react-simple-chatbot **(30 баллов)**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+11. Кнопочка скролла наверх, появляется при перемотке вниз на 400 px **(10 баллов)**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+12. Хедер с выпадающим меню и поиском с выпадающим окошком результатов **(10 баллов)**
 
-### `npm run eject`
+13. Поиск по фильтрам **(10 баллов)**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+14. Страница поиска по ключевому слову **(10 баллов)**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+15. Страницы ТОП фильмов **(10 баллов)**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+16. Страница актера **(10 баллов)**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+17. Панелька фактов на странице фильмов и актеров **(10 баллов)**
 
-## Learn More
+18. График и список с переключаемыми параметрами на странице актера с использованием chart.js **(30 баллов)**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+19. Страница фильмов **(10 баллов)**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+20. Таблица с информацией на странице фильмов **(10 баллов)**
 
-### Code Splitting
+21. Список главных ролей на странице фильмов **(10 баллов)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+22. Туллтип с использованием materials-ui на таблице фильмов и на списке главных ролей **(10 баллов)**
 
-### Analyzing the Bundle Size
+23. Страница всего съемочного персонала, ссылка на списке главных ролей **(10 баллов)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Суммарно: **320 + 10 баллов**
 
-### Making a Progressive Web App
+## Видео для проверяющих
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+WIP

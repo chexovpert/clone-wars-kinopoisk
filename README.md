@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-![Project screenshot](./assets/main.png)
+![Project screenshot](/assets/main.png)
 
 ## Deploy
 

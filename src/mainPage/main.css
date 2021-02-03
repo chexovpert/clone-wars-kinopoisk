@@ -1,5 +1,6 @@
 .main-container {
-  height: 89.4vh;
+  height: auto;
+  min-height: 89vh;
   background: linear-gradient(rgba(0, 10, 0, 0.6), rgba(0, 10, 0, 0.6)), url("./assets/main.jpg");
   background-size: cover;
   background-position: center 50%;

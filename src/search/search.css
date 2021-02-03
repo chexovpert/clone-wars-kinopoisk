@@ -3,7 +3,9 @@
   position: relative;
   /* background: url(./Burger.png); */
   height: 30px;
-  width: 30px;
+  width: 35vw;
+  min-width: 260px;
+  max-width: 350px;
 }
 
 .search-input {
@@ -20,6 +22,7 @@
   display: none;
   position: absolute;
   top: 30px;
+  right: 0;
   width: 350px;
   /* height: auto; */
   background-color: #f9f9f9;
@@ -30,7 +33,9 @@
 .search-form {
   display: flex;
   background-color: azure;
-  width: 350px;
+  width: 35vw;
+  min-width: 65px;
+  max-width: 350px;
   justify-content: space-between;
   align-items: center;
 }
@@ -52,4 +57,10 @@
   text-decoration: none;
   color: #0c0c0c;
   margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .search-form {
+    max-width: 250px;
+  }
 }

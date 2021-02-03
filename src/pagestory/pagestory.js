@@ -26,7 +26,7 @@ class Pagestory extends React.Component {
           <p>Вы интересовались</p>
           <div className="pageStory">
             {this.state.history.map((page) => (
-              <div>
+              <div className="poster-container">
                 <NavLink className="page-story-page" to={page.filmId ? "/film/" + page.filmId : "/name/" + page.personId} exact>
                   <img src={page.posterUrl} alt={page.nameRu} className="page_story_img"></img>
                 </NavLink>

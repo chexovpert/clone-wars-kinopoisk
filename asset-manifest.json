@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/clone-wars-kinopoisk/static/css/main.732cbb17.chunk.css",
-    "main.js": "/clone-wars-kinopoisk/static/js/main.78a93840.chunk.js",
-    "main.js.map": "/clone-wars-kinopoisk/static/js/main.78a93840.chunk.js.map",
+    "main.css": "/clone-wars-kinopoisk/static/css/main.edf7ab2b.chunk.css",
+    "main.js": "/clone-wars-kinopoisk/static/js/main.ac9a5714.chunk.js",
+    "main.js.map": "/clone-wars-kinopoisk/static/js/main.ac9a5714.chunk.js.map",
     "runtime-main.js": "/clone-wars-kinopoisk/static/js/runtime-main.4928f1dc.js",
     "runtime-main.js.map": "/clone-wars-kinopoisk/static/js/runtime-main.4928f1dc.js.map",
     "static/js/2.e7ba7195.chunk.js": "/clone-wars-kinopoisk/static/js/2.e7ba7195.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.ec79f717.chunk.js": "/clone-wars-kinopoisk/static/js/3.ec79f717.chunk.js",
     "static/js/3.ec79f717.chunk.js.map": "/clone-wars-kinopoisk/static/js/3.ec79f717.chunk.js.map",
     "index.html": "/clone-wars-kinopoisk/index.html",
-    "static/css/main.732cbb17.chunk.css.map": "/clone-wars-kinopoisk/static/css/main.732cbb17.chunk.css.map",
+    "static/css/main.edf7ab2b.chunk.css.map": "/clone-wars-kinopoisk/static/css/main.edf7ab2b.chunk.css.map",
     "static/js/2.e7ba7195.chunk.js.LICENSE.txt": "/clone-wars-kinopoisk/static/js/2.e7ba7195.chunk.js.LICENSE.txt",
     "static/media/1579194125_pressa_tv_black-back.e5f66ed6.jpeg": "/clone-wars-kinopoisk/static/media/1579194125_pressa_tv_black-back.e5f66ed6.jpeg",
     "static/media/1579194167_pressa_tv_moody-misty.c2eb1a7f.jpeg": "/clone-wars-kinopoisk/static/media/1579194167_pressa_tv_moody-misty.c2eb1a7f.jpeg",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.4928f1dc.js",
     "static/js/2.e7ba7195.chunk.js",
-    "static/css/main.732cbb17.chunk.css",
-    "static/js/main.78a93840.chunk.js"
+    "static/css/main.edf7ab2b.chunk.css",
+    "static/js/main.ac9a5714.chunk.js"
   ]
 }

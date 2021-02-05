@@ -10,7 +10,7 @@
 
 [ТипоКинопоиск](https://chexovpert.github.io/clone-wars-kinopoisk/#/)
 
-## сдача/дедлайн
+## Сдача/дедлайн
 
 03.02.2021/03.02.2021
 
@@ -19,9 +19,9 @@
 [Ссылка на статью](https://chexovpert.medium.com/rs-clone-%D1%82%D0%B8%D0%BF%D0%BE%D0%BA%D0%B8%D0%BD%D0%BE%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-bcafa59f24d)
 Короткое видео с обзором основного функционала присутствует в статье
 
-## Видео для проверяющих
+## Видео
 
-WIP (Залью до выходных)
+[Ссылка на видео(в статье аналогичное)](https://www.youtube.com/watch?v=pyNaGy1bUos&feature=youtu.be&ab_channel=PavelGuzhavin)
 
 ## Реализованный функционал
 
